@@ -1,0 +1,8 @@
+# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+# This file: Supabase project config; only the webhook function's settings differ from `supabase init` defaults.
+# Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
+project_id = "revenuedot-webhook-example"
+
+[functions.revenuedot-webhook]
+# RevenueDot authenticates with its HMAC signature, not a Supabase JWT, so the gateway must let the request through.
+verify_jwt = false
