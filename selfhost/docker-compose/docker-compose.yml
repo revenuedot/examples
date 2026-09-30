@@ -1,0 +1,37 @@
+# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+# This file: RevenueDot (API + dashboard in one container) and Postgres 16, with a persistent volume.
+# Docs: https://revenuedot.app/docs/guides/self-hosting   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
+#
+#   cp .env.example .env && docker compose up -d      ->  http://localhost:8787
+#
+# There is no published image yet, so Compose builds it from the RevenueDot source.
+# REVENUEDOT_SOURCE can point at a local checkout instead of GitHub (useful when you change the server).
+services:
+  revenuedot:
+    build:
+      context: ${REVENUEDOT_SOURCE:-https://github.com/revenuedot/revenuedot.git#main}
+    image: revenuedot:local
+    ports: ["${REVENUEDOT_PORT:-8787}:8787"]
+    environment:
+      # The server runs its database migrations on start, so upgrades need no extra step.
+      DATABASE_URL: postgres://revenuedot:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@db:5432/revenuedot
+      PORT: "8787"
+    depends_on:
+      db: { condition: service_healthy }
+    restart: unless-stopped
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: revenuedot
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: revenuedot
+    # Purchases, customers and webhooks live here. Back this volume up (see README).
+    volumes: [revenuedot-data:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U revenuedot"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+volumes:
+  revenuedot-data:

@@ -1,0 +1,14 @@
+{
+  "name": "revenuedot-example-node-express-webhook",
+  "private": true,
+  "description": "Express server that receives RevenueDot webhooks and verifies their HMAC signature.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
