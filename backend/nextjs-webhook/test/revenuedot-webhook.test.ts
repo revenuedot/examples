@@ -1,7 +1,7 @@
 // RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
 // This file: tests signature verification and the route handler with a real delivery captured from a RevenueDot server.
 // Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import fixture from "./fixtures/initial-purchase.json";
 import { verifySignature } from "../lib/revenuedot-webhook";
 import { POST } from "../app/api/webhooks/revenuedot/route";
@@ -33,13 +33,13 @@ describe("verifySignature", () => {
 });
 
 describe("POST /api/webhooks/revenuedot", () => {
-  const realNow = Date.now;
   beforeEach(() => {
     process.env.REVENUEDOT_WEBHOOK_SECRET = fixture.secret;
     process.env.REVENUEDOT_WEBHOOK_AUTHORIZATION = fixture.authorization_header;
-    Date.now = () => signedAt.getTime();
+    // Freezes `new Date()` too, which the route uses; overriding Date.now alone would not.
+    vi.useFakeTimers({ now: signedAt, toFake: ["Date"] });
   });
-  afterEach(() => { Date.now = realNow; });
+  afterEach(() => { vi.useRealTimers(); });
 
   const deliver = (headers: Record<string, string>) =>
     POST(new Request("http://localhost/api/webhooks/revenuedot", { method: "POST", body: fixture.body, headers: { "content-type": "application/json", ...headers } }));
