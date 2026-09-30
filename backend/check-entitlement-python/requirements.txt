@@ -1,0 +1,2 @@
+# Tests only: entitlements.py and server.py use the Python standard library.
+pytest==9.1.1

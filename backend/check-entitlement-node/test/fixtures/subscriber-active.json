@@ -1,0 +1,42 @@
+{
+  "request_date": "2026-09-30T20:43:42Z",
+  "request_date_ms": 1790801022259,
+  "subscriber": {
+    "entitlements": {
+      "pro": {
+        "expires_date": "2026-10-30T20:43:42Z",
+        "grace_period_expires_date": null,
+        "product_identifier": "pro_monthly",
+        "purchase_date": "2026-09-30T20:43:42Z"
+      }
+    },
+    "first_seen": "2026-09-30T20:43:42Z",
+    "last_seen": "2026-09-30T20:43:42Z",
+    "management_url": null,
+    "non_subscriptions": {},
+    "original_app_user_id": "user_42",
+    "original_application_version": null,
+    "original_purchase_date": "2026-09-30T20:43:42Z",
+    "other_purchases": {},
+    "subscriber_attributes": {},
+    "subscriptions": {
+      "pro_monthly": {
+        "auto_resume_date": null,
+        "billing_issues_detected_at": null,
+        "display_name": null,
+        "expires_date": "2026-10-30T20:43:42Z",
+        "grace_period_expires_date": null,
+        "is_sandbox": true,
+        "management_url": null,
+        "original_purchase_date": "2026-09-30T20:43:42Z",
+        "ownership_type": "PURCHASED",
+        "period_type": "normal",
+        "purchase_date": "2026-09-30T20:43:42Z",
+        "refunded_at": null,
+        "store": "test_store",
+        "store_transaction_id": "test_1790801022121_cd925630-845f-4838-a91a-9e13374a4110",
+        "unsubscribe_detected_at": null
+      }
+    }
+  }
+}

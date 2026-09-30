@@ -1,0 +1,11 @@
+source "https://rubygems.org"
+
+# Only the Rails pieces a webhook needs: routing and controllers, no Active Record or asset pipeline.
+gem "actionpack", "~> 8.0"
+gem "railties", "~> 8.0"
+gem "puma", "~> 7.0"
+gem "rackup", "~> 2.2"
+
+group :test do
+  gem "minitest", "~> 5.25"
+end

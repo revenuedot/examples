@@ -1,0 +1,12 @@
+{
+  "name": "revenuedot-example-check-entitlement-node",
+  "private": true,
+  "description": "Check a customer's RevenueDot entitlement from a Node.js server with REST v1 GET /v1/subscribers.",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "test": "node --test",
+    "test:live": "node --env-file-if-exists=.env --test"
+  }
+}

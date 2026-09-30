@@ -1,0 +1,11 @@
+{
+  "name": "revenuedot-example-aws-lambda-webhook",
+  "private": true,
+  "description": "AWS Lambda function that receives RevenueDot webhooks and verifies their HMAC signature.",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test",
+    "zip": "zip -r function.zip package.json src"
+  }
+}
