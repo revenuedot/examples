@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RevenueDot web paywall</title>
+  </head>
+  <body>
+    <main style="font-family: system-ui, sans-serif; max-width: 520px; margin: 40px auto; padding: 0 16px">
+      <h1>Go Pro</h1>
+      <p data-testid="entitlement">…</p>
+      <ul id="packages" style="list-style: none; padding: 0"></ul>
+      <p role="status" data-testid="status">Loading offerings…</p>
+      <form id="login" style="display: flex; gap: 8px">
+        <input id="user-id" placeholder="Your user id" aria-label="User id" />
+        <button type="submit">Log in</button>
+      </form>
+      <p style="color: #666; font-size: 13px">App user id: <code data-testid="app-user-id">…</code></p>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

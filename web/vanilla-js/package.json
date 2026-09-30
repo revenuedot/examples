@@ -1,0 +1,20 @@
+{
+  "name": "revenuedot-example-vanilla-js",
+  "private": true,
+  "description": "Framework-free TypeScript + Vite web paywall using purchases-js against a RevenueDot server with the Test Store.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "@revenuecat/purchases-js": "^1.67.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.1"
+  }
+}
