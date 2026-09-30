@@ -1,0 +1,14 @@
+# Capacitor and Ionic (@revenuecat/purchases-capacitor), iOS and Android. Docs: https://revenuedot.app/docs/sdks/capacitor
+--- a/src/purchases.ts
++++ b/src/purchases.ts
+@@
+-import { Purchases } from "@revenuecat/purchases-capacitor";
++import { ENTITLEMENT_VERIFICATION_MODE, Purchases } from "@revenuecat/purchases-capacitor";
+
++// Point the SDK at your RevenueDot server; nothing else in the app changes. Await it before configure.
++await Purchases.setProxyURL({ url: "https://revenuedot.example.com" });
+ await Purchases.configure({
+   apiKey: isIOS ? "appl_..." : "goog_...",
++  // Capacitor passes no default, so the native default (informational signature checks) would apply.
++  entitlementVerificationMode: ENTITLEMENT_VERIFICATION_MODE.DISABLED,
+ });

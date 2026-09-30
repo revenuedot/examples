@@ -1,0 +1,10 @@
+# Cordova (cordova-plugin-purchases). Cordova has no option to turn off signature checks, so the SDK logs
+# "failed verification" for every RevenueDot response; access is still granted. Docs: https://revenuedot.app/docs/sdks/cordova
+--- a/www/js/index.js
++++ b/www/js/index.js
+@@
+ document.addEventListener("deviceready", () => {
++  // Point the SDK at your RevenueDot server; nothing else in the app changes. Call it before configure.
++  Purchases.setProxyURL("https://revenuedot.example.com");
+   Purchases.configureWith({ apiKey: device.platform === "iOS" ? "appl_..." : "goog_..." });
+ });

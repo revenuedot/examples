@@ -1,0 +1,17 @@
+# Android (RevenueCat Android SDK 8+). Docs: https://revenuedot.app/docs/sdks/android
+--- a/MainApplication.kt
++++ b/MainApplication.kt
+@@
+ override fun onCreate() {
+     super.onCreate()
++    // Point the SDK at your RevenueDot server; nothing else in the app changes. Must be set before configure.
++    Purchases.proxyURL = URL("https://revenuedot.example.com")
+     Purchases.configure(
+         PurchasesConfiguration.Builder(this, "goog_...")
++            // The default (INFORMATIONAL) logs every RevenueDot response as failed signature verification.
++            .entitlementVerificationMode(EntitlementVerificationMode.DISABLED)
+             .build()
+     )
++    // Once, after this update: send purchases made while the app talked to RevenueCat.
++    Purchases.sharedInstance.syncPurchases()
+ }

@@ -1,0 +1,17 @@
+# iOS, macOS, tvOS, watchOS, visionOS (RevenueCat iOS SDK 5.x). Docs: https://revenuedot.app/docs/sdks/ios
+--- a/App.swift
++++ b/App.swift
+@@
+ import RevenueCat
+
++// Point the SDK at your RevenueDot server; nothing else in the app changes. Set it before configure.
++Purchases.proxyURL = URL(string: "https://revenuedot.example.com")!
+-Purchases.configure(withAPIKey: "appl_...")
++Purchases.configure(
++    with: Configuration.Builder(withAPIKey: "appl_...")
++        // The default (informational) logs every RevenueDot response as failed signature verification.
++        .with(entitlementVerificationMode: .disabled)
++        .build()
++)
++// Once, after this update: send purchases made while the app talked to RevenueCat.
++_ = try? await Purchases.shared.syncPurchases()

@@ -1,0 +1,13 @@
+# Web (@revenuecat/purchases-js). Only Test Store (test_) keys work against RevenueDot today; Web Billing (rcb_), Stripe and Paddle do not.
+# Docs: https://revenuedot.app/docs/sdks/web
+--- a/purchases.ts
++++ b/purchases.ts
+@@
+ const purchases = Purchases.configure({
+   apiKey: "test_...",
+   appUserId,
++  // Point the SDK at your RevenueDot server; nothing else in the app changes. No trailing slash.
++  httpConfig: { proxyURL: "https://revenuedot.example.com" },
++  // Analytics events do not use the proxy URL; turn them off to keep all traffic on your server.
++  flags: { collectAnalyticsEvents: false },
+ });

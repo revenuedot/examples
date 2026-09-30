@@ -1,0 +1,20 @@
+# RevenueDot example: Flutter paywall using purchases_flutter against a RevenueDot server.
+# Docs: https://revenuedot.app/docs/sdks/flutter   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
+name: revenuedot_paywall
+description: Flutter paywall (offerings, purchase, restore, customer info, logIn) pointed at RevenueDot with setProxyURL.
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  purchases_flutter: ^10.13.2
+
+dev_dependencies:
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true

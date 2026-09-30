@@ -1,0 +1,13 @@
+# Flutter (purchases_flutter), iOS and Android. Flutter web cannot use a proxy URL yet. Docs: https://revenuedot.app/docs/sdks/flutter
+--- a/lib/purchases.dart
++++ b/lib/purchases.dart
+@@
+ import 'package:purchases_flutter/purchases_flutter.dart';
+
+ Future<void> initPurchases() async {
++  // Point the SDK at your RevenueDot server; nothing else in the app changes. Await it before configure.
++  await Purchases.setProxyURL('https://revenuedot.example.com');
+   await Purchases.configure(PurchasesConfiguration(Platform.isIOS ? 'appl_...' : 'goog_...'));
++  // Once, after this update: send purchases made while the app talked to RevenueCat.
++  await Purchases.syncPurchases();
+ }

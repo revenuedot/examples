@@ -1,0 +1,12 @@
+# Kotlin Multiplatform (purchases-kmp). Docs: https://revenuedot.app/docs/sdks/kotlin-multiplatform
+--- a/shared/src/commonMain/kotlin/Purchases.kt
++++ b/shared/src/commonMain/kotlin/Purchases.kt
+@@
+ fun initPurchases(apiKey: String) {
++    // Point the SDK at your RevenueDot server; nothing else in the app changes. A String, set before configure.
++    Purchases.proxyURL = "https://revenuedot.example.com"
+     Purchases.configure(PurchasesConfiguration(apiKey) {
++        // DISABLED is the KMP default; keep it, RevenueDot does not sign responses with RevenueCat's key.
++        verificationMode = EntitlementVerificationMode.DISABLED
+     })
+ }

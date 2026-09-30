@@ -1,0 +1,32 @@
+# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+# XcodeGen spec for the SwiftUI paywall example: `xcodegen generate` writes RevenueDotPaywall.xcodeproj.
+# Docs: https://revenuedot.app/docs/sdks/ios   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
+name: RevenueDotPaywall
+options:
+  bundleIdPrefix: com.example.revenuedot
+  deploymentTarget:
+    iOS: "16.0"
+packages:
+  RevenueCat:
+    url: https://github.com/RevenueCat/purchases-ios-spm.git
+    from: 5.91.0
+targets:
+  RevenueDotPaywall:
+    type: application
+    platform: iOS
+    sources: [RevenueDotPaywall]
+    dependencies:
+      - package: RevenueCat
+    info:
+      path: RevenueDotPaywall/Info.plist
+      properties:
+        UILaunchScreen: {}
+        CFBundleDisplayName: RevenueDot Paywall
+        # Lets the simulator reach a RevenueDot on http://localhost or your LAN during development.
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.revenuedot.paywall
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: NO
