@@ -3,7 +3,7 @@
 **Runnable sample apps, backends and self-host recipes for [RevenueDot](https://revenuedot.app), the open-source, self-hostable alternative to RevenueCat.**
 RevenueDot speaks the same API as the RevenueCat SDKs, so an app points its SDK at a RevenueDot server with one setting (the proxy URL) and keeps its purchase code. Every example here runs against a local RevenueDot with the built-in Test Store, so you need no App Store or Google Play account to try it.
 
-> Status: pre-alpha. RevenueDot and these examples change quickly. The "Status" column says exactly what was run for each example; "Live" and "against a server" mean it was run against a real RevenueDot server on 2026-09-30, not only compiled. "Written, not run" examples follow the same spec but have never been compiled; expect small fixes.
+> The "Status" column says exactly what was run for each example; "Live" and "against a server" mean it was run against a real RevenueDot server on 2026-09-30, not only compiled. "Written, not run" examples follow the same spec but have never been compiled; expect small fixes.
 
 ## Examples
 
