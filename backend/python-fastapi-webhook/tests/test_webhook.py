@@ -31,5 +31,7 @@ def test_endpoint_accepts_dedupes_and_rejects():
     res = client.post("/webhooks/revenuedot", content=BODY, headers=good)
     assert res.status_code == 200 and res.json() == {"received": True}
     assert client.post("/webhooks/revenuedot", content=BODY, headers=good).json() == {"received": True, "duplicate": True}
-    assert client.post("/webhooks/revenuedot", content=BODY, headers={**good, "x-revenuecat-webhook-signature": "t=1,v1=00"}).status_code == 401
-    assert client.post("/webhooks/revenuedot", content=BODY, headers={**good, "authorization": "Bearer nope"}).status_code == 401
+    bad_sig = client.post("/webhooks/revenuedot", content=BODY, headers={**good, "x-revenuecat-webhook-signature": "t=1,v1=00"})
+    assert (bad_sig.status_code, bad_sig.json()) == (401, {"error": "invalid signature"})
+    bad_auth = client.post("/webhooks/revenuedot", content=BODY, headers={**good, "authorization": "Bearer nope"})
+    assert (bad_auth.status_code, bad_auth.json()) == (401, {"error": "invalid authorization"})

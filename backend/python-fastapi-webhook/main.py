@@ -7,7 +7,8 @@ import os
 import time
 from typing import Callable
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 
 from verify import SIGNATURE_HEADER, verify_signature
 
@@ -24,9 +25,9 @@ def create_app(secret: str, authorization: str | None = None, clock: Callable[[]
         # request.body() is the raw bytes; the signature covers them exactly, so parse JSON only after verifying.
         raw = await request.body()
         if not verify_signature(raw, request.headers.get(SIGNATURE_HEADER), secret, now=clock()):
-            raise HTTPException(status_code=401, detail="invalid signature")
+            return JSONResponse({"error": "invalid signature"}, status_code=401)
         if authorization and not hmac.compare_digest(request.headers.get("authorization", ""), authorization):
-            raise HTTPException(status_code=401, detail="invalid authorization")
+            return JSONResponse({"error": "invalid authorization"}, status_code=401)
         event = json.loads(raw)["event"]
         if event["id"] in seen:
             return {"received": True, "duplicate": True}
