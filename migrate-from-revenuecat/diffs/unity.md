@@ -14,14 +14,22 @@ The `proxyURL` field is applied before the SDK is configured, also when you conf
 `PurchasesConfiguration` and `EntitlementVerificationMode` are nested in the `Purchases` class, so outside it they
 need the `Purchases.` prefix.
 
+To configure from code, also check **Use Runtime Setup** on the Purchases component; without it the component
+configures itself from the Inspector fields. Your script must run after `Purchases.Start()`, which creates the native
+wrapper and applies the Proxy URL field; calling `Configure` earlier throws a `NullReferenceException`.
+`[DefaultExecutionOrder(100)]` makes Unity call your `Start()` after it.
+
 ```csharp
 using UnityEngine;
 
+// Runs after Purchases.Start(), which creates the native wrapper and applies the Proxy URL field.
+[DefaultExecutionOrder(100)]
+[RequireComponent(typeof(Purchases))]
 public class Store : MonoBehaviour
 {
     void Start()
     {
-        // Runtime setup: the Proxy URL field on the Purchases component still applies.
+        // Needs "Use Runtime Setup" checked on the Purchases component. The Proxy URL field still applies.
         var purchases = GetComponent<Purchases>();
         purchases.Configure(Purchases.PurchasesConfiguration.Builder.Init("appl_...")
             .SetEntitlementVerificationMode(Purchases.EntitlementVerificationMode.Disabled)
