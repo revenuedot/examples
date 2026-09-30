@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// This file: Laravel's command-line entry point (php artisan serve, php artisan test).
+// Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
+
+use Illuminate\Foundation\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+
+define('LARAVEL_START', microtime(true));
+
+require __DIR__.'/vendor/autoload.php';
+
+/** @var Application $app */
+$app = require_once __DIR__.'/bootstrap/app.php';
+
+exit($app->handleCommand(new ArgvInput));

@@ -1,0 +1,13 @@
+<!-- RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+     This file: logs at INFO so the handler's lines are not buried under Netty's DEBUG output.
+     Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate -->
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} %-5level %logger{20} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+  </root>
+</configuration>
