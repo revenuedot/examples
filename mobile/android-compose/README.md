@@ -3,7 +3,7 @@
 ## What this is
 An Android app written with Jetpack Compose. Its one paywall screen lists the packages of the current offering, buys one, restores purchases, shows whether the `pro` entitlement is active, and logs the user in. It uses RevenueCat's Android SDK (`com.revenuecat.purchases:purchases` 10.24), pointed at a RevenueDot server with `Purchases.proxyURL`.
 
-**Status: unverified build.** The source was written against the APIs in the SDK's source code, but it has not been compiled: the Mac that wrote it has no Android SDK and only Java 8. Expect small fixes when you first open it in Android Studio. RevenueDot `main` of 2026-09-30 also has a Test Store bug that stops the iOS SDK from loading Test Store products (`cycle_count: null`), and it may affect Android too. It is tracked in [docs/DISCREPANCIES.md](https://github.com/revenuedot/docs/blob/main/DISCREPANCIES.md).
+**Status: unverified build.** The source was written against the APIs in the SDK's source code, but it has not been compiled: the Mac that wrote it has no Android SDK and only Java 8. Expect small fixes when you first open it in Android Studio. The server's Test Store `cycle_count: null` bug is fixed ([revenuedot/revenuedot@00d0ea6](https://github.com/revenuedot/revenuedot/commit/00d0ea6)); the unmodified RevenueCat Android SDK 10.24 passes a Test Store purchase on an emulator in the server's own harness.
 
 ## Why RevenueDot
 RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.

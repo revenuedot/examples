@@ -1,7 +1,7 @@
 # RevenueDot examples
 
 **Runnable sample apps, backends and self-host recipes for [RevenueDot](https://revenuedot.app), the open-source, self-hostable alternative to RevenueCat.**
-RevenueDot speaks the same API as the RevenueCat SDKs, so an app points its SDK at a RevenueDot server with one setting (the proxy URL) and keeps its purchase code. Every example here runs against a local RevenueDot with the built-in Test Store, so you need no App Store or Google Play account to try it.
+RevenueDot speaks the same API as the RevenueCat SDKs, so an app points its SDK at a RevenueDot server with one setting (the proxy URL) and keeps its purchase code. Every example here runs against a local RevenueDot with the built-in Test Store, so you need no App Store or Google Play account to try it. They also work against RevenueDot Cloud: sign up at https://app.revenuedot.app and use `https://api.revenuedot.app` as the server URL.
 
 > The "Status" column says exactly what was run for each example; "Live" and "against a server" mean it was run against a real RevenueDot server on 2026-09-30, not only compiled. "Written, not run" examples follow the same spec but have never been compiled; expect small fixes.
 
@@ -11,7 +11,7 @@ RevenueDot speaks the same API as the RevenueCat SDKs, so an app points its SDK 
 |---|---|---|
 | Self-host: Docker Compose + Postgres, seed script | [`selfhost/docker-compose`](selfhost/docker-compose) | Verified: built from GitHub, started, seeded, backed up, restored, rebuilt |
 | Migrate from RevenueCat: importer, catalog copy, notification forwarding, SDK diffs | [`migrate-from-revenuecat`](migrate-from-revenuecat) | Scripts verified between two RevenueDot projects; diffs checked against SDK sources |
-| Mobile: iOS SwiftUI | [`mobile/ios-swiftui`](mobile/ios-swiftui) | Builds for the simulator; Test Store run needs the server `cycle_count` fix |
+| Mobile: iOS SwiftUI | [`mobile/ios-swiftui`](mobile/ios-swiftui) | Builds for the simulator; ran end to end with the server's `cycle_count` value patched; the server fix has shipped, the example has not been re-run since |
 | Mobile: Android Jetpack Compose | [`mobile/android-compose`](mobile/android-compose) | Written, not run: no Android SDK on the build machine |
 | Mobile: Flutter | [`mobile/flutter`](mobile/flutter) | Written, not run: no Flutter SDK on the build machine |
 | Mobile: React Native (Expo) | [`mobile/react-native-expo`](mobile/react-native-expo) | Typecheck and expo-doctor pass; web run verified with a Test Store purchase; native builds unverified |
