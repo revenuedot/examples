@@ -3,7 +3,7 @@
 ## What this is
 A Next.js (App Router) route handler at `POST /api/webhooks/revenuedot` that verifies the HMAC signature of each RevenueDot webhook, ignores duplicate deliveries and acts on the event type. The verification lives in `lib/revenuedot-webhook.ts`, so you can copy it into any Node.js project.
 
-**Status: verified.** `npm test` (9 tests, run against a real signed delivery captured from a RevenueDot server in `test/fixtures/initial-purchase.json`), `npm run typecheck` and `npx next build` pass with Next.js 16.3. Also tested live: a local RevenueDot delivered `TEST` and `INITIAL_PURCHASE` events to `next start` and recorded `delivered`, HTTP 200.
+**Status: verified.** `npm test` (9 tests, run against a real signed delivery captured from a RevenueDot server in `test/fixtures/initial-purchase.json`), `npm run typecheck` and `npx next build` pass with Next.js 16.3. Also tested live on 2026-09-30 with [`scripts/e2e-webhook.sh`](../../scripts/e2e-webhook.sh): a local RevenueDot signed and delivered a Test Store `INITIAL_PURCHASE` to `next start` and recorded `delivered`, HTTP 200.
 
 ## Why RevenueDot
 RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.

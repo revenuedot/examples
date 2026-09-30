@@ -3,7 +3,7 @@
 ## What this is
 A FastAPI app with `POST /webhooks/revenuedot` that verifies the HMAC signature of each RevenueDot webhook, ignores duplicate deliveries and acts on the event type. `verify.py` uses only the standard library.
 
-**Status: verified.** `pytest` (2 tests with a real signed delivery captured from a RevenueDot server) passes on Python 3.14 with FastAPI 0.14x. Also tested live: a local RevenueDot delivered an `INITIAL_PURCHASE` to `uvicorn` and recorded `delivered`, HTTP 200.
+**Status: verified.** `pytest` (2 tests with a real signed delivery captured from a RevenueDot server) passes on Python 3.14 with FastAPI 0.14x. Also tested live on 2026-09-30 with [`scripts/e2e-webhook.sh`](../../scripts/e2e-webhook.sh): a local RevenueDot signed and delivered a Test Store `INITIAL_PURCHASE` to `uvicorn main:app` and recorded `delivered`, HTTP 200.
 
 ## Why RevenueDot
 RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
