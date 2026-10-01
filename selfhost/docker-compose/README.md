@@ -46,8 +46,9 @@ RD_EMAIL=you@example.com RD_PASSWORD='a-long-password' WEBHOOK_URL=http://host.d
 | `POSTGRES_PASSWORD` | none (required) | Password of the bundled Postgres. It is stored in the volume on the first start; changing it later needs `ALTER USER` in Postgres too |
 | `REVENUEDOT_PORT` | `8787` | Host port for the API and the dashboard |
 | `REVENUEDOT_SOURCE` | `https://github.com/revenuedot/revenuedot.git#main` | Where the image is built from. Point it at a local checkout to run your own changes |
+| `REVENUEDOT_SIGNING_KEY` | unset (signing off) | Optional. Base64 Ed25519 seed that signs SDK responses, for apps that pin this server's public key. `pnpm tsx scripts/signing-keygen.ts` in a `revenuedot/revenuedot` checkout prints it. Compose passes it to the server |
 
-Inside the container the server reads `DATABASE_URL` and `PORT`; Compose sets both. App Store and Google Play credentials are not environment variables: they belong to each app and are set in the dashboard or through the REST API.
+Inside the container the server reads `DATABASE_URL` and `PORT`, which Compose sets, and `REVENUEDOT_SIGNING_KEY`, which Compose passes from `.env`. App Store and Google Play credentials are not environment variables: they belong to each app and are set in the dashboard or through the REST API.
 
 ### Back up, restore, upgrade
 ```bash

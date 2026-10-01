@@ -16,6 +16,8 @@ services:
       # The server runs its database migrations on start, so upgrades need no extra step.
       DATABASE_URL: postgres://revenuedot:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@db:5432/revenuedot
       PORT: "8787"
+      # Signs SDK responses when set in .env; empty leaves signing off. Generate it with scripts/signing-keygen.ts in revenuedot/revenuedot.
+      REVENUEDOT_SIGNING_KEY: ${REVENUEDOT_SIGNING_KEY:-}
     depends_on:
       db: { condition: service_healthy }
     restart: unless-stopped
