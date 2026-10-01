@@ -39,17 +39,20 @@ APP="$(call GET "$P/apps?limit=100" | jq -r '[.items[] | select(.type=="test_sto
 TEST_KEY="$(call GET "$P/apps/$APP/public_api_keys" | jq -r '.items[0].key')"
 
 # 3. Products. The duration is what the Test Store uses as the subscription period.
-product() { # store_identifier type display_name [duration]
+product() { # store_identifier type display_name price_usd [duration]
   local id; id="$(call GET "$P/products?app_id=$APP&limit=100" | jq -r --arg s "$1" '[.items[] | select(.store_identifier==$s)][0].id // empty')"
   if [ -z "$id" ]; then
-    local sub=""; [ -n "${4:-}" ] && sub=",\"subscription\":{\"duration\":\"$4\"}"
+    local sub=""; [ -n "${5:-}" ] && sub=",\"subscription\":{\"duration\":\"$5\"}"
     id="$(call POST "$P/products" "{\"store_identifier\":\"$1\",\"app_id\":\"$APP\",\"type\":\"$2\",\"display_name\":\"$3\"$sub}" | jq -r .id)"
   fi
+  # The Test Store charges this price (set on every run, so older seeds get prices too); paywalls show it.
+  local micros; micros="$(awk -v p="$4" 'BEGIN { printf "%.0f", p * 1000000 }')"
+  call POST "$P/products/$id" "{\"test_store_price\":{\"amount_micros\":$micros,\"currency\":\"USD\"}}" >/dev/null || return 1
   printf '%s' "$id"
 }
-MONTHLY="$(product pro_monthly subscription 'Pro monthly' P1M)"
-ANNUAL="$(product pro_annual subscription 'Pro yearly' P1Y)"
-LIFETIME="$(product pro_lifetime non_consumable 'Pro lifetime')"
+MONTHLY="$(product pro_monthly subscription 'Pro monthly' 9.99 P1M)"
+ANNUAL="$(product pro_annual subscription 'Pro yearly' 59.99 P1Y)"
+LIFETIME="$(product pro_lifetime non_consumable 'Pro lifetime' 149.99)"
 
 # 4. The "pro" entitlement, unlocked by all three products. Apps check customerInfo.entitlements["pro"].
 ENT="$(call GET "$P/entitlements?limit=100" | jq -r '[.items[] | select(.lookup_key=="pro")][0].id // empty')"
