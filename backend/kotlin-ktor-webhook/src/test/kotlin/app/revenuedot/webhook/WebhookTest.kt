@@ -29,15 +29,15 @@ class WebhookTest {
     private val secret = fixture["secret"]!!.jsonPrimitive.content
     private val signature = fixture["signature_header"]!!.jsonPrimitive.content
     private val authorization = fixture["authorization_header"]!!.jsonPrimitive.content
-    private val body = fixture["body"]!!.jsonPrimitive.content
+    private val payload = fixture["body"]!!.jsonPrimitive.content
     // Freeze "now" at the signing time; otherwise the 5-minute window has long passed.
     private val signedAt = Instant.ofEpochSecond(Regex("""t=(\d+)""").find(signature)!!.groupValues[1].toLong())
 
     @Test
     fun `accepts the real delivery and rejects tampering, wrong secrets, old deliveries and missing headers`() {
-        val raw = body.toByteArray()
+        val raw = payload.toByteArray()
         assertTrue(verifySignature(raw, signature, secret, signedAt))
-        assertFalse(verifySignature(body.replaceFirst("9.99", "0.99").toByteArray(), signature, secret, signedAt), "changed body")
+        assertFalse(verifySignature(payload.replaceFirst("9.99", "0.99").toByteArray(), signature, secret, signedAt), "changed body")
         assertFalse(verifySignature(raw, signature, "whsec_wrong", signedAt), "wrong secret")
         assertFalse(verifySignature(raw, signature, secret, signedAt.plusSeconds(301)), "old delivery")
         assertFalse(verifySignature(raw, null, secret, signedAt), "missing header")
@@ -51,7 +51,8 @@ class WebhookTest {
             contentType(ContentType.Application.Json)
             header(SIGNATURE_HEADER, sig)
             header("Authorization", auth)
-            setBody(body)
+            // Not `body`: inside this builder that name is the request's own (empty) body.
+            setBody(payload)
         }
 
         send(signature, authorization).let {

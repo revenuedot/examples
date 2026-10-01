@@ -62,6 +62,8 @@ if has bundle && ruby -e 'exit(RUBY_VERSION >= "3.2" ? 0 : 1)' 2>/dev/null; then
   step "backend/ruby-sinatra-webhook" backend/ruby-sinatra-webhook bash -c "$BUNDLE && bundle exec ruby test/webhook_test.rb"
   step "backend/ruby-rails-webhook" backend/ruby-rails-webhook bash -c "$BUNDLE && bundle exec ruby test/webhook_test.rb"
 else skip+=("ruby examples (need Ruby 3.2+ with bundler)"); fi
+# The Java and Kotlin examples need JDK 21; Homebrew's openjdk@21 is used when present.
+[ -d /opt/homebrew/opt/openjdk@21 ] && export JAVA_HOME=/opt/homebrew/opt/openjdk@21 PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 if has mvn; then
   step "backend/java-spring-boot-webhook" backend/java-spring-boot-webhook mvn -q -B test
   step "backend/kotlin-ktor-webhook" backend/kotlin-ktor-webhook mvn -q -B test
@@ -70,6 +72,8 @@ if has php; then step "backend/php-webhook" backend/php-webhook php tests/run.ph
 if has php && has composer; then
   step "backend/php-laravel-webhook" backend/php-laravel-webhook bash -c "composer install --no-interaction --quiet && php artisan test"
 else skip+=("backend/php-laravel-webhook (no php or composer)"); fi
+# Microsoft's dotnet-install.sh puts the SDK in ~/.dotnet without touching the system.
+[ -x "$HOME/.dotnet/dotnet" ] && export DOTNET_ROOT="$HOME/.dotnet" PATH="$HOME/.dotnet:$PATH"
 if has dotnet; then step "backend/csharp-aspnet-webhook" backend/csharp-aspnet-webhook dotnet test tests/Webhook.Tests; else skip+=("backend/csharp-aspnet-webhook (no dotnet)"); fi
 if has mix; then step "backend/elixir-plug-webhook" backend/elixir-plug-webhook bash -c "mix deps.get && mix test"; else skip+=("backend/elixir-plug-webhook (no elixir)"); fi
 
