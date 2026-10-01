@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "RevenueDot Paywall",
+    "name": "Focus",
     "slug": "revenuedot-paywall",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.example.revenuedot.paywall"

@@ -8,6 +8,9 @@ const serverURL = process.env.EXPO_PUBLIC_REVENUEDOT_URL;
 const testKey = process.env.EXPO_PUBLIC_REVENUEDOT_API_KEY;
 const storeKey = Platform.select({ ios: process.env.EXPO_PUBLIC_REVENUEDOT_IOS_KEY, android: process.env.EXPO_PUBLIC_REVENUEDOT_ANDROID_KEY });
 
+/** The server host the app talks to, for the Developer section ("localhost:8787", "api.revenuedot.app"). */
+export const serverHost = serverURL ? serverURL.replace(/^[a-z]+:\/\//i, "").split("/")[0] : "not set";
+
 let configured: Promise<void> | null = null;
 
 /** Safe to call from several places: the SDK is configured once. */
