@@ -9,17 +9,31 @@
 /* Begin PBXBuildFile section */
 		258946F630BBFF0B2EADD1B1 /* SandboxConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35942EDEC90AAD43FE95FFE6 /* SandboxConfig.swift */; };
 		2743C9F2F82A22644C3540A8 /* RevenueDotSandboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8324E6E265A0F41C88D84A8 /* RevenueDotSandboxApp.swift */; };
-		434958B13683B19DB0016C80 /* SandboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CB642F19FCC2194F853440 /* SandboxView.swift */; };
+		4C9D9522DF561217897F5227 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4896ED3AA323B152E9F28C /* Onboarding.swift */; };
+		745B78E4BBC35A5142ABDB16 /* Paywall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F9DCF90FE0C2D1BECBFFEC /* Paywall.swift */; };
+		A39AB4B9489427C13F1DD386 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59A4F38DA17EA35466E6677 /* Theme.swift */; };
+		A9CE64AD9805A7876891E197 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09063DDEDE9D2FA8EEA6CF1 /* Home.swift */; };
+		BE6924FC0A4043F9015FE581 /* DemoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA252D3F530F42C8C701EF8 /* DemoScreen.swift */; };
+		C2F236DF2D1E8F3C8F285AE6 /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800B2D11D021A349938D8305 /* Plans.swift */; };
+		E54122F7EE8406DEA24A0101 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375CA5ED0892FB472983190 /* Settings.swift */; };
+		E6EEDD1D88B8D2D08ECC8659 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20037D123DC8C9708705919A /* RootView.swift */; };
 		EDCA4A1B5E98CDF385FCCF59 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 97CA0B899E22C357D5160235 /* RevenueCat */; };
 		F90AF4B20A43EA5FFA7AE9D2 /* SandboxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215098FE70DE3A4C237A9F7D /* SandboxModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		20CB642F19FCC2194F853440 /* SandboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxView.swift; sourceTree = "<group>"; };
+		20037D123DC8C9708705919A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		215098FE70DE3A4C237A9F7D /* SandboxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxModel.swift; sourceTree = "<group>"; };
 		35942EDEC90AAD43FE95FFE6 /* SandboxConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxConfig.swift; sourceTree = "<group>"; };
+		46F9DCF90FE0C2D1BECBFFEC /* Paywall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paywall.swift; sourceTree = "<group>"; };
 		719A7D741E027E4A8D1C7A60 /* RevenueDotSandbox.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = RevenueDotSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		800B2D11D021A349938D8305 /* Plans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
+		8A4896ED3AA323B152E9F28C /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		90050806636271782DD3C22E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A59A4F38DA17EA35466E6677 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		B09063DDEDE9D2FA8EEA6CF1 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		BEA252D3F530F42C8C701EF8 /* DemoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScreen.swift; sourceTree = "<group>"; };
+		D375CA5ED0892FB472983190 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E8324E6E265A0F41C88D84A8 /* RevenueDotSandboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueDotSandboxApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,11 +60,18 @@
 		8D8353551AC56821B6399152 /* RevenueDotSandbox */ = {
 			isa = PBXGroup;
 			children = (
+				BEA252D3F530F42C8C701EF8 /* DemoScreen.swift */,
+				B09063DDEDE9D2FA8EEA6CF1 /* Home.swift */,
 				90050806636271782DD3C22E /* Info.plist */,
+				8A4896ED3AA323B152E9F28C /* Onboarding.swift */,
+				46F9DCF90FE0C2D1BECBFFEC /* Paywall.swift */,
+				800B2D11D021A349938D8305 /* Plans.swift */,
 				E8324E6E265A0F41C88D84A8 /* RevenueDotSandboxApp.swift */,
+				20037D123DC8C9708705919A /* RootView.swift */,
 				35942EDEC90AAD43FE95FFE6 /* SandboxConfig.swift */,
 				215098FE70DE3A4C237A9F7D /* SandboxModel.swift */,
-				20CB642F19FCC2194F853440 /* SandboxView.swift */,
+				D375CA5ED0892FB472983190 /* Settings.swift */,
+				A59A4F38DA17EA35466E6677 /* Theme.swift */,
 			);
 			path = RevenueDotSandbox;
 			sourceTree = "<group>";
@@ -127,10 +148,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE6924FC0A4043F9015FE581 /* DemoScreen.swift in Sources */,
+				A9CE64AD9805A7876891E197 /* Home.swift in Sources */,
+				4C9D9522DF561217897F5227 /* Onboarding.swift in Sources */,
+				745B78E4BBC35A5142ABDB16 /* Paywall.swift in Sources */,
+				C2F236DF2D1E8F3C8F285AE6 /* Plans.swift in Sources */,
 				2743C9F2F82A22644C3540A8 /* RevenueDotSandboxApp.swift in Sources */,
+				E6EEDD1D88B8D2D08ECC8659 /* RootView.swift in Sources */,
 				258946F630BBFF0B2EADD1B1 /* SandboxConfig.swift in Sources */,
 				F90AF4B20A43EA5FFA7AE9D2 /* SandboxModel.swift in Sources */,
-				434958B13683B19DB0016C80 /* SandboxView.swift in Sources */,
+				E54122F7EE8406DEA24A0101 /* Settings.swift in Sources */,
+				A39AB4B9489427C13F1DD386 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +239,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -291,7 +319,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

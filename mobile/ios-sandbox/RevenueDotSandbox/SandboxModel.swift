@@ -6,51 +6,66 @@ import RevenueCat
 
 @MainActor
 final class SandboxModel: ObservableObject {
-    @Published var packages: [Package] = []
+    @Published var plans: [Plan] = []
     @Published var customerInfo: CustomerInfo?
     @Published var message = ""
     @Published var busy = false
     @Published var loggedInID: String?
+    @Published var offeringID: String?
+    /// Why offerings or customer info didn't load (shown in Settings > Developer, never on the paywall).
+    @Published var loadError: String?
 
     var isPro: Bool { customerInfo?.entitlements[SandboxConfig.entitlement]?.isActive == true }
-    var proExpiry: Date? { customerInfo?.entitlements[SandboxConfig.entitlement]?.expirationDate }
+    var proEntitlement: EntitlementInfo? { customerInfo?.entitlements[SandboxConfig.entitlement] }
     var appUserID: String { Purchases.shared.appUserID }
     var activeSubscriptions: [String] { customerInfo.map { Array($0.activeSubscriptions).sorted() } ?? [] }
-    /// The monthly package, found by package id or by App Store product id.
-    var monthly: Package? {
-        packages.first { $0.identifier == "$rc_monthly" || $0.storeProduct.productIdentifier == SandboxConfig.monthlyProduct } ?? packages.first
-    }
 
     func load() async {
-        await run("Load") {
+        do {
             let offerings = try await Purchases.shared.offerings()
-            self.packages = offerings.current?.availablePackages ?? []
-            if offerings.current == nil { self.message = "No current offering. Create one in the RevenueDot dashboard." }
-            return try await Purchases.shared.customerInfo()
+            offeringID = offerings.current?.identifier
+            plans = Plan.from(offerings.current?.availablePackages ?? [])
+            customerInfo = try await Purchases.shared.customerInfo()
+            loadError = nil
+        } catch {
+            loadError = error.localizedDescription
         }
     }
 
-    /// Customer info also changes outside this screen (renewals arrive from the App Store via RevenueDot).
+    /// Customer info also changes outside the app (renewals arrive from the App Store via RevenueDot).
     func listen() async {
         for await info in Purchases.shared.customerInfoStream { customerInfo = info }
     }
 
-    func subscribe() async {
-        guard let package = monthly else { message = "No package to buy yet."; return }
+    /// Saves the onboarding answers as customer attributes, so audiences and experiments can target them.
+    func save(_ answers: Answers) {
+        Purchases.shared.attribution.setAttributes(answers.reduce(into: [:]) { $0["onboarding_\($1.key)"] = $1.value })
+    }
+
+    /// Returns true when the purchase unlocked the entitlement.
+    func purchase(_ package: Package) async -> Bool {
+        busy = true
+        defer { busy = false }
         do {
-            busy = true
-            defer { busy = false }
             let result = try await Purchases.shared.purchase(package: package)
             customerInfo = result.customerInfo
-            message = result.userCancelled ? "Purchase cancelled." : "Purchased \(package.storeProduct.productIdentifier)."
+            message = result.userCancelled ? "" : "Welcome to Pro."
+            return !result.userCancelled && isPro
         } catch ErrorCode.purchaseCancelledError {
-            message = "Purchase cancelled."
+            return false
         } catch {
             message = "Purchase failed: \(error.localizedDescription)"
+            return false
         }
     }
 
-    func restore() async { await run("Restore") { try await Purchases.shared.restorePurchases() } }
+    /// Returns true when restoring found an active entitlement.
+    @discardableResult
+    func restore() async -> Bool {
+        await run("Restore") { try await Purchases.shared.restorePurchases() }
+        if !isPro && message == "Restore: done." { message = "No purchases to restore on this Apple ID." }
+        return isPro
+    }
 
     func toggleLogin(_ id: String) async {
         if loggedInID == nil {
@@ -65,7 +80,7 @@ final class SandboxModel: ObservableObject {
         defer { busy = false }
         do {
             customerInfo = try await action()
-            if label != "Load" { message = "\(label): done." }
+            message = "\(label): done."
         } catch {
             message = "\(label) failed: \(error.localizedDescription)"
         }

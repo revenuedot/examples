@@ -5,7 +5,7 @@ name: RevenueDotSandbox
 options:
   bundleIdPrefix: app.revenuedot
   deploymentTarget:
-    iOS: "16.0"
+    iOS: "17.0"
 packages:
   RevenueCat:
     url: https://github.com/RevenueCat/purchases-ios-spm.git

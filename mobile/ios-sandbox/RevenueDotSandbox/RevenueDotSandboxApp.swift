@@ -19,6 +19,6 @@ struct RevenueDotSandboxApp: App {
     }
 
     var body: some Scene {
-        WindowGroup { SandboxView() }
+        WindowGroup { RootView() }
     }
 }
