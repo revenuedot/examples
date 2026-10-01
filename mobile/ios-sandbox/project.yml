@@ -1,0 +1,38 @@
+# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+# XcodeGen spec for the App Store sandbox app: `xcodegen generate` writes RevenueDotSandbox.xcodeproj.
+# Docs: https://revenuedot.app/docs/sdks/ios   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
+name: RevenueDotSandbox
+options:
+  bundleIdPrefix: app.revenuedot
+  deploymentTarget:
+    iOS: "16.0"
+packages:
+  RevenueCat:
+    url: https://github.com/RevenueCat/purchases-ios-spm.git
+    from: 5.91.0
+targets:
+  RevenueDotSandbox:
+    type: application
+    platform: iOS
+    sources: [RevenueDotSandbox]
+    dependencies:
+      - package: RevenueCat
+    info:
+      path: RevenueDotSandbox/Info.plist
+      properties:
+        UILaunchScreen: {}
+        CFBundleDisplayName: RevenueDot Sandbox
+        # The public app key (appl_...) is injected at build time from the REVENUEDOT_API_KEY build setting.
+        RevenueDotAPIKey: $(REVENUEDOT_API_KEY)
+        ITSAppUsesNonExemptEncryption: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.revenuedot.sandbox
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: NO
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: DQVMM49PG9
+        # Placeholder; override with -REVENUEDOT_API_KEY=appl_... (a public client key, safe inside the app).
+        REVENUEDOT_API_KEY: appl_REPLACE_ME

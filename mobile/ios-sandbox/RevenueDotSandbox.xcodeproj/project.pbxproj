@@ -1,0 +1,348 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		258946F630BBFF0B2EADD1B1 /* SandboxConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35942EDEC90AAD43FE95FFE6 /* SandboxConfig.swift */; };
+		2743C9F2F82A22644C3540A8 /* RevenueDotSandboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8324E6E265A0F41C88D84A8 /* RevenueDotSandboxApp.swift */; };
+		434958B13683B19DB0016C80 /* SandboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CB642F19FCC2194F853440 /* SandboxView.swift */; };
+		EDCA4A1B5E98CDF385FCCF59 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 97CA0B899E22C357D5160235 /* RevenueCat */; };
+		F90AF4B20A43EA5FFA7AE9D2 /* SandboxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215098FE70DE3A4C237A9F7D /* SandboxModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		20CB642F19FCC2194F853440 /* SandboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxView.swift; sourceTree = "<group>"; };
+		215098FE70DE3A4C237A9F7D /* SandboxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxModel.swift; sourceTree = "<group>"; };
+		35942EDEC90AAD43FE95FFE6 /* SandboxConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxConfig.swift; sourceTree = "<group>"; };
+		719A7D741E027E4A8D1C7A60 /* RevenueDotSandbox.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = RevenueDotSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		90050806636271782DD3C22E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E8324E6E265A0F41C88D84A8 /* RevenueDotSandboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueDotSandboxApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F1FB7C7F811459FB98CA8163 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDCA4A1B5E98CDF385FCCF59 /* RevenueCat in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8CDAD236CD35DE0CE70E5343 = {
+			isa = PBXGroup;
+			children = (
+				8D8353551AC56821B6399152 /* RevenueDotSandbox */,
+				EE3BBFDF827D6F4D1298F949 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8D8353551AC56821B6399152 /* RevenueDotSandbox */ = {
+			isa = PBXGroup;
+			children = (
+				90050806636271782DD3C22E /* Info.plist */,
+				E8324E6E265A0F41C88D84A8 /* RevenueDotSandboxApp.swift */,
+				35942EDEC90AAD43FE95FFE6 /* SandboxConfig.swift */,
+				215098FE70DE3A4C237A9F7D /* SandboxModel.swift */,
+				20CB642F19FCC2194F853440 /* SandboxView.swift */,
+			);
+			path = RevenueDotSandbox;
+			sourceTree = "<group>";
+		};
+		EE3BBFDF827D6F4D1298F949 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				719A7D741E027E4A8D1C7A60 /* RevenueDotSandbox.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		41882B64C129405881BA8D5E /* RevenueDotSandbox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF06C83C0E2967D88A1253F1 /* Build configuration list for PBXNativeTarget "RevenueDotSandbox" */;
+			buildPhases = (
+				F1126BD9C60B45898D0149DA /* Sources */,
+				F1FB7C7F811459FB98CA8163 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RevenueDotSandbox;
+			packageProductDependencies = (
+				97CA0B899E22C357D5160235 /* RevenueCat */,
+			);
+			productName = RevenueDotSandbox;
+			productReference = 719A7D741E027E4A8D1C7A60 /* RevenueDotSandbox.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00BDFDE0ACDD2FBACEF360ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					41882B64C129405881BA8D5E = {
+						DevelopmentTeam = DQVMM49PG9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 08AD9DA173840A56E3C70A96 /* Build configuration list for PBXProject "RevenueDotSandbox" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 8CDAD236CD35DE0CE70E5343;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D7FDFC4E7AF7BE19A16A8EC3 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				41882B64C129405881BA8D5E /* RevenueDotSandbox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F1126BD9C60B45898D0149DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2743C9F2F82A22644C3540A8 /* RevenueDotSandboxApp.swift in Sources */,
+				258946F630BBFF0B2EADD1B1 /* SandboxConfig.swift in Sources */,
+				F90AF4B20A43EA5FFA7AE9D2 /* SandboxModel.swift in Sources */,
+				434958B13683B19DB0016C80 /* SandboxView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2A94505C67E87A2F466B90C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DQVMM49PG9;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = RevenueDotSandbox/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.revenuedot.sandbox;
+				REVENUEDOT_API_KEY = appl_REPLACE_ME;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		546FCFD5A20450F41E09EC80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B75C89285AF853E2A96FD97E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DQVMM49PG9;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = RevenueDotSandbox/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.revenuedot.sandbox;
+				REVENUEDOT_API_KEY = appl_REPLACE_ME;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CEE52B165CD16E5D25417B6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		08AD9DA173840A56E3C70A96 /* Build configuration list for PBXProject "RevenueDotSandbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				546FCFD5A20450F41E09EC80 /* Debug */,
+				CEE52B165CD16E5D25417B6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DF06C83C0E2967D88A1253F1 /* Build configuration list for PBXNativeTarget "RevenueDotSandbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A94505C67E87A2F466B90C4 /* Debug */,
+				B75C89285AF853E2A96FD97E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D7FDFC4E7AF7BE19A16A8EC3 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.91.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		97CA0B899E22C357D5160235 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D7FDFC4E7AF7BE19A16A8EC3 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 00BDFDE0ACDD2FBACEF360ED /* Project object */;
+}
