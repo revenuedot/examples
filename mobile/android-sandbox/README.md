@@ -29,6 +29,8 @@ export ORG_GRADLE_PROJECT_uploadStorePassword=...                # read it from 
 # Output: app/build/outputs/bundle/release/app-release.aab
 ```
 
+The key is a public client key (the RevenueDot project's Google Play app key, `goog_...`), so it is safe inside the app. The repo keeps the placeholder `goog_REPLACE_ME` in `gradle.properties`, and `-PrevenuedotApiKey=` overrides it for one build. A bundle built with the placeholder installs, but every SDK call fails with an invalid-key error. To check which key a build carries, look at `app/build/generated/source/buildConfig/release/app/revenuedot/sandbox/BuildConfig.java`.
+
 Signing comes only from Gradle properties (`uploadStoreFile`, `uploadStorePassword`, `uploadKeyAlias`, `uploadKeyPassword`), set here as `ORG_GRADLE_PROJECT_*` environment variables. Nothing secret lives in the repo. Without them, the release bundle is unsigned and Play rejects it.
 
 ## How it works
