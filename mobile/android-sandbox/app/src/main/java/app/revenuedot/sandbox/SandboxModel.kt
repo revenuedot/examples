@@ -1,7 +1,7 @@
 // RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
 // This file: loads offerings and customer info, and runs purchase, restore and logIn/logOut with the coroutine API.
 // Docs: https://revenuedot.app/docs/sdks/android   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
-package com.example.revenuedot.paywall
+package app.revenuedot.sandbox
 
 import android.app.Activity
 import androidx.compose.runtime.getValue
@@ -25,7 +25,7 @@ import com.revenuecat.purchases.awaitRestore
 import com.revenuecat.purchases.interfaces.UpdatedCustomerInfoListener
 import kotlinx.coroutines.launch
 
-class PaywallViewModel : ViewModel() {
+class SandboxModel : ViewModel() {
     private val purchases get() = Purchases.sharedInstance
 
     var plans by mutableStateOf<List<Plan>>(emptyList()); private set
@@ -34,44 +34,48 @@ class PaywallViewModel : ViewModel() {
     var message by mutableStateOf("")
     var busy by mutableStateOf(false); private set
     var anonymous by mutableStateOf(true); private set
-    /** Why offerings or customer info didn't load (shown in the Developer section, never on the paywall). */
+    /** Why offerings or customer info didn't load (shown in Account > Developer, never on the paywall). */
     var loadError by mutableStateOf<String?>(null); private set
 
-    val proEntitlement: EntitlementInfo? get() = customerInfo?.entitlements?.get(PaywallConfig.ENTITLEMENT)
+    val proEntitlement: EntitlementInfo? get() = customerInfo?.entitlements?.get(SandboxConfig.ENTITLEMENT)
     val isPro: Boolean get() = proEntitlement?.isActive == true
     val appUserID: String get() = purchases.appUserID
     val activeSubscriptions: List<String> get() = customerInfo?.activeSubscriptions?.sorted().orEmpty()
 
-    // Customer info also changes outside the app (renewals reach RevenueDot from the store while it is open).
+    // Customer info also changes outside the app: renewals reach RevenueDot from Google Play while it is open.
     private val listener = UpdatedCustomerInfoListener { update(it) }
 
     init {
         purchases.updatedCustomerInfoListener = listener
         anonymous = purchases.isAnonymous
-        launch {
-            try {
-                // GET /v1/subscribers/{id}/offerings on your RevenueDot server.
-                val offerings = purchases.awaitOfferings()
-                offeringID = offerings.current?.identifier
-                plans = Plan.from(offerings.current?.availablePackages.orEmpty())
-                update(purchases.awaitCustomerInfo())
-                loadError = null
-            } catch (e: PurchasesException) {
-                loadError = e.message
-            }
-        }
+        load()
     }
 
     override fun onCleared() = purchases.removeUpdatedCustomerInfoListener()
 
     /** Runs SDK work in the model's scope, so a purchase in flight survives the paywall closing or the screen rotating. */
-    fun launch(block: suspend PaywallViewModel.() -> Unit) = viewModelScope.launch { block() }
+    fun launch(block: suspend SandboxModel.() -> Unit) = viewModelScope.launch { block() }
+
+    fun load() = viewModelScope.launch {
+        try {
+            val offerings = purchases.awaitOfferings()
+            offeringID = offerings.current?.identifier
+            plans = Plan.from(offerings.current?.availablePackages.orEmpty())
+            update(purchases.awaitCustomerInfo())
+            loadError = null
+        } catch (e: PurchasesException) {
+            loadError = e.message
+        }
+    }
+
+    /** Saves the onboarding answers as customer attributes, so audiences and experiments can target them. */
+    fun save(answers: Answers) = purchases.setAttributes(answers.mapKeys { "onboarding_${it.key}" })
 
     /** Returns true when the purchase unlocked the entitlement. */
     suspend fun purchase(activity: Activity, pkg: Package): Boolean {
         busy = true
         return try {
-            // Google Play (or the Test Store dialog) takes payment; the SDK then posts it to POST /v1/receipts.
+            // Play takes payment; the SDK then posts the purchase token to RevenueDot (POST /v1/receipts).
             update(purchases.awaitPurchase(PurchaseParams.Builder(activity, pkg).build()).customerInfo)
             message = "Welcome to Pro."
             isPro
@@ -83,15 +87,13 @@ class PaywallViewModel : ViewModel() {
         }
     }
 
-    /** Restore sends this Google account's purchases to RevenueDot; the project's transfer setting decides who gets them.
-     *  Returns true when it found an active entitlement. */
+    /** Returns true when restoring found an active entitlement. */
     suspend fun restore(): Boolean {
         run("Restore") { purchases.awaitRestore() }
         if (!isPro && message == "Restore: done.") message = "No purchases to restore on this Google account."
         return isPro
     }
 
-    /** logIn switches to your own user id (an anonymous user's purchases move with them); logOut returns to an anonymous id. */
     suspend fun toggleLogin(id: String) {
         if (anonymous) run("Log in") { purchases.awaitLogIn(id).customerInfo } else run("Log out") { purchases.awaitLogOut() }
     }

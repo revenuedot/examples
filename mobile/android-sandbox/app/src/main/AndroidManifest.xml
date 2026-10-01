@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- RevenueDot Google Play sandbox app. The SDK's manifest adds INTERNET, and Play Billing adds com.android.vending.BILLING. -->
+<!-- RevenueDot Google Play sandbox app ("Focus"). The SDK's manifest adds INTERNET, and Play Billing adds com.android.vending.BILLING.
+     POST_NOTIFICATIONS is for the onboarding's reminder step (a runtime permission since Android 13). -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:name=".SandboxApplication"
         android:label="RevenueDot Sandbox"
         android:allowBackup="false"
-        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+        android:theme="@style/Theme.Focus">
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

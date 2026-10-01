@@ -1,9 +1,13 @@
 # Jetpack Compose paywall with the RevenueCat Android SDK and RevenueDot
 
 ## What this is
-An Android app written with Jetpack Compose. Its one paywall screen lists the packages of the current offering, buys one, restores purchases, shows whether the `pro` entitlement is active, and logs the user in. It uses RevenueCat's Android SDK (`com.revenuecat.purchases:purchases` 10.24), pointed at a RevenueDot server with `Purchases.proxyURL`.
+The drop-in paywall sample: an Android app in Jetpack Compose with the "Focus" design from [`mobile/DESIGN.md`](../DESIGN.md) and RevenueCat's Android SDK (`com.revenuecat.purchases:purchases` 10.24.0), pointed at a RevenueDot server with `Purchases.proxyURL`. It has two parts:
+- **A two-page paywall.** Page 1 sells the value: the eyebrow "Focus Pro", "Unlock your best work, every day." and four benefit lines. Page 2 shows how the free trial works (Today, Day 5 reminder, Day 7 charge), then the plans from the current offering with annual first and pre-selected, a gold "Save N%" badge, **Start my free week**, and the renewal disclosure with Terms and Privacy links. Closing it with annual selected offers the shortest plan once ("Not ready for a year?").
+- **A minimal home** that shows the Pro state: a **Free plan** card with **See plans**, or **Focus Pro** with the renewal date and a trial tag; Restore purchases and Manage subscription; and a collapsed **Developer** section with the app user id, the `pro` entitlement, active subscriptions, the current offering, the server, any load error, and **Log in** / **Log out**.
 
-**Status: unverified build.** The source was written against the APIs in the SDK's source code, but it has not been compiled: the Mac that wrote it has no Android SDK and only Java 8. Expect small fixes when you first open it in Android Studio. The server's Test Store `cycle_count: null` bug is fixed ([revenuedot/revenuedot@00d0ea6](https://github.com/revenuedot/revenuedot/commit/00d0ea6)); the unmodified RevenueCat Android SDK 10.24 passes a Test Store purchase on an emulator in the server's own harness.
+For the full app with the onboarding quiz in front of the paywall, see [`android-sandbox`](../android-sandbox).
+
+**Status: builds and renders.** `assembleDebug` passes with JDK 17 and Android SDK 36, and every screen was checked on an emulator against the preview plans. A purchase against a live Test Store server has not been run from this app; the unmodified RevenueCat Android SDK 10.24 passes a Test Store purchase on an emulator in the server's own harness.
 
 ## Why RevenueDot
 RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
@@ -16,8 +20,8 @@ You need Android Studio (JDK 17) and a RevenueDot server with a Test Store app. 
    revenuedot.serverUrl=http://10.0.2.2:8787    # the emulator reaches your computer as 10.0.2.2
    revenuedot.apiKey=test_...                   # from seed.sh
    ```
-2. Open the folder in Android Studio. It creates the Gradle wrapper. Without Studio, run `gradle wrapper --gradle-version 8.14.3` first.
-3. Run on an emulator. Tap a plan, then tap **Test valid purchase**.
+2. Open the folder in Android Studio, or build from the command line with the included wrapper: `./gradlew :app:assembleDebug` (JDK 17).
+3. Run on an emulator. Tap **See plans**, **Continue**, then **Start my free week** (or **Continue** for a plan without a trial), and in the Test Store dialog tap **Test valid purchase**.
 
 Keep in mind:
 - **Test Store keys (`test_`) only work in debug builds.** In a release build the SDK shows an error screen and stops the app on purpose. Ship with the `goog_` key of a Google Play app.
@@ -29,10 +33,17 @@ Keep in mind:
 - **`.entitlementVerificationMode(EntitlementVerificationMode.DISABLED)`** turns signature checks off. The default, informational, checks each response for RevenueCat's signature, logs an error when it is missing, and still grants access. RevenueDot does not sign responses with RevenueCat's key.
 - **`PaywallViewModel.kt`** uses the coroutine API:
   - `awaitOfferings()` and `awaitCustomerInfo()`.
-  - `awaitPurchase(PurchaseParams)`, which posts the purchase to `POST /v1/receipts`.
-  - `awaitRestore()` and `awaitLogIn(id)`.
-  - `updatedCustomerInfoListener`.
-  - Access is `customerInfo.entitlements.active["pro"]`. A cancelled purchase is a `PurchasesTransactionException` with `userCancelled == true`.
+  - `awaitPurchase(PurchaseParams)`, which posts the purchase to `POST /v1/receipts`. A cancelled purchase is a `PurchasesTransactionException` with `userCancelled == true`.
+  - `awaitRestore()`, `awaitLogIn(id)` and `awaitLogOut()`.
+  - `updatedCustomerInfoListener`, for renewals that arrive while the app is open.
+  - Pro is `customerInfo.entitlements["pro"].isActive`. A purchase or restore that unlocks it closes the paywall.
+- **`Plans.kt`** turns `offerings.current` into plan cards: the billed amount ("$59.99/year") is the largest price, the price per week sits under it, the annual badge compares price per week with the weekly (or monthly) plan, and the trial length comes from the default subscription option's free phase. With no offering yet, the paywall shows preview plans (Yearly $59.99/year with a 7-day trial, Weekly $4.99/week) and a note; buying them is disabled.
+- **Load errors** show only in the Developer section, never on the paywall.
+- **`Theme.kt`** holds the design tokens: ink (black, or white in dark mode) at 100%, 62%, 42%, 10% (hairlines) and 4% (fills), and the gold `#F7B500` only on the selected dot, the savings badge, the first trial step and the Pro dot. Material 3 is plumbing only (bottom sheet, icons); its colour roles are pinned to ink and ground, so nothing is tinted, elevated or purple.
+- **Screenshots and UI tests:** debug builds read the intent extra `RDScreen`: `paywall`, `plans`, `home`, or `settings` (home with the Developer section open).
+  ```sh
+  adb shell am start -S -n com.example.revenuedot.paywall/.MainActivity --es RDScreen plans
+  ```
 - **What still goes to RevenueCat:** with a proxy URL set, the Android SDK still sends diagnostics, paywall events and ad events to RevenueCat's own hosts. Purchases, customer info and offerings all go to RevenueDot.
 
 ## Migrate from RevenueCat

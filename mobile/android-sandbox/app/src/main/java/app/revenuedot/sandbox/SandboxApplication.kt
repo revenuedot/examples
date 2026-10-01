@@ -15,7 +15,7 @@ class SandboxApplication : Application() {
         super.onCreate()
         Purchases.logLevel = LogLevel.DEBUG
         // Android reads the proxy URL once, during configure, so it must be set first. Any path in it is dropped.
-        Purchases.proxyURL = URL("https://api.revenuedot.app")
+        Purchases.proxyURL = URL(SandboxConfig.SERVER_URL)
         Purchases.configure(
             PurchasesConfiguration.Builder(this, BuildConfig.REVENUEDOT_API_KEY)
                 // The default mode checks each response for RevenueCat's signature; RevenueDot does not sign with

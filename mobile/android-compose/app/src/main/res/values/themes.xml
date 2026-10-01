@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The window behind Compose: white, so launch shows no grey or tinted frame before the first screen draws. -->
+<resources>
+    <style name="Theme.Focus" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+</resources>

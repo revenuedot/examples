@@ -1,5 +1,6 @@
 // RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
-// This file: app module: Compose, the stock RevenueCat Android SDK, the API key as a BuildConfig field, and upload signing.
+// This file: app module: Compose, the stock RevenueCat Android SDK, Play In-App Review, the API key as a BuildConfig
+// field, and upload signing.
 // Docs: https://revenuedot.app/docs/sdks/android   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 plugins {
     id("com.android.application")
@@ -21,8 +22,8 @@ android {
         applicationId = "app.revenuedot.sandbox"
         minSdk = 23 // what purchases 10.24.0 declares
         targetSdk = 36
-        versionCode = 2
-        versionName = "1.1"
+        versionCode = 3
+        versionName = "1.2"
         buildConfigField("String", "REVENUEDOT_API_KEY", "\"${providers.gradleProperty("revenuedotApiKey").get()}\"")
     }
     signingConfigs {
@@ -58,6 +59,10 @@ dependencies {
     implementation("com.revenuecat.purchases:purchases:10.24.0")
     implementation(platform("androidx.compose:compose-bom:2024.09.00"))
     implementation("androidx.compose.foundation:foundation")
+    // Material 3 is plumbing only (sheets, icons, text); the look comes from Theme.kt.
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material:material-icons-extended")
     implementation("androidx.activity:activity-compose:1.9.3")
+    // The rating request after the first finished session.
+    implementation("com.google.android.play:review:2.0.2")
 }
