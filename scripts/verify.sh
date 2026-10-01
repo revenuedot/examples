@@ -81,6 +81,10 @@ if [ -x mobile/android-compose/gradlew ] && [ "${VERIFY_GRADLE:-0}" = 1 ]; then
   step "mobile/android-compose" mobile/android-compose ./gradlew assembleDebug
 else skip+=("mobile/android-compose (set VERIFY_GRADLE=1 with a Gradle wrapper and Android SDK)"); fi
 
+if [ -x mobile/android-sandbox/gradlew ] && [ "${VERIFY_GRADLE:-0}" = 1 ]; then
+  step "mobile/android-sandbox" mobile/android-sandbox ./gradlew -q bundleRelease
+else skip+=("mobile/android-sandbox (set VERIFY_GRADLE=1 with JDK 17 and the Android SDK)"); fi
+
 step "selfhost/docker-compose (syntax)" selfhost/docker-compose bash -n seed.sh
 step "scripts/e2e-webhook.sh (syntax)" scripts bash -n e2e-webhook.sh
 if docker_ok; then step "selfhost/docker-compose (config)" selfhost/docker-compose bash -c "POSTGRES_PASSWORD=x docker compose config -q"
