@@ -1,7 +1,9 @@
 # SwiftUI paywall with the RevenueCat iOS SDK and RevenueDot
 
 ## What this is
-A SwiftUI iPhone app with one paywall screen: it lists the packages of the current offering, buys one, restores purchases, shows whether the `pro` entitlement is active, and logs the user in. It uses RevenueCat's iOS SDK (`RevenueCat` 5.91+) pointed at a RevenueDot server with `Purchases.proxyURL`.
+A drop-in SwiftUI paywall for the RevenueCat iOS SDK (`RevenueCat` 5.91+) pointed at a RevenueDot server with `Purchases.proxyURL`. It follows the paywall pattern that converts best in 2026: page one sells the value; page two shows how the free trial works (today, the reminder day, the charge day) above the plans, with annual pre-selected, the billed price as the largest number and the savings badge beside it. Closing it offers the shorter plan once. A small home screen stands in for your app: it shows whether `pro` is active, opens the paywall, restores, manages the subscription and logs the user in.
+
+The full onboarding-to-paywall app with the same design is [`../ios-sandbox`](../ios-sandbox); the design rules are in [`../DESIGN.md`](../DESIGN.md).
 
 **Status: builds; Test Store run blocked by a server bug.** The app builds for the iPhone 17 Pro simulator (iOS 26.2) with Xcode 27.0, XcodeGen 2.44 and RevenueCat 5.92.0 (`xcodegen generate`, then `xcodebuild ... build`, rerun on 2026-09-30). Against RevenueDot `main` of 2026-09-30, the Test Store fails: `getOfferings` reports "No base price found for product pro_monthly". The server sends `cycle_count: null` in its Test Store product details, which the iOS SDK cannot decode. With that one field changed to `1` (a local test proxy), the app ran end to end on an iPhone 17 Pro simulator: it loaded the offering, bought `$rc_monthly` in the Test Store alert, showed `pro` active, and moved the purchase to `ios_user_1` with logIn. Real App Store sandbox purchases were not tested. The server now sends a numeric `cycle_count` (fixed on 2026-09-30 in [revenuedot/revenuedot@00d0ea6](https://github.com/revenuedot/revenuedot/commit/00d0ea6)), and the unmodified RevenueCat iOS SDK 5.92 passes a Test Store purchase against it in the server's own simulator harness; this example has not been re-run against the fixed server yet.
 
@@ -34,6 +36,9 @@ Keep these in mind:
   - `purchase(package:)`, where the store (or the Test Store alert) takes payment and the SDK posts it to `POST /v1/receipts`.
   - `restorePurchases()`, `logIn(_:)` (`POST /v1/subscribers/identify`) and `customerInfoStream`.
 - **Access check:** `customerInfo.entitlements["pro"]?.isActive == true`.
+- **`Plans.swift`** turns the current offering's packages into plans: billed price, price per week, the annual savings against the shortest plan, and the free-trial length from the product's introductory offer. With no offering yet, the paywall shows preview plans and buying is off.
+- **`PaywallView.swift`** is the paywall; copy it with **`Theme.swift`** (tokens, buttons, the selection dot) and **`Plans.swift`** into your app and present it with `.fullScreenCover`. Replace the benefit lines, and set `termsURL`, `privacyURL` and (only once you have one) `review` in `RevenueDotConfig.swift`.
+- **Screenshots:** debug builds open the paywall directly with `xcrun simctl launch booted com.example.revenuedot.paywall -RDScreen paywall` (or `plans` for page two).
 
 ## Migrate from RevenueCat
 ```diff

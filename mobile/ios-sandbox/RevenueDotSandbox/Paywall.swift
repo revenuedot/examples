@@ -2,7 +2,7 @@
 // This file: the paywall, built from the current offering with the 2026 patterns that convert best:
 // page 1 sells the value in the user's own words; page 2 shows how the free trial works, the plans with annual
 // pre-selected, and the disclosure Apple requires. Closing it offers the shorter plan once before leaving.
-// Research: company/docs/research/paywall-onboarding-2026.md   Docs: https://revenuedot.app/docs/guides/paywalls
+// Design rules: ../../DESIGN.md   Docs: https://revenuedot.app/docs/guides/paywalls
 import RevenueCat
 import SwiftUI
 

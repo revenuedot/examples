@@ -6,22 +6,26 @@ import RevenueCat
 
 @MainActor
 final class PaywallModel: ObservableObject {
-    @Published var packages: [Package] = []
+    @Published var plans: [Plan] = []
     @Published var customerInfo: CustomerInfo?
     @Published var message = ""
     @Published var busy = false
+    /// Why offerings or customer info didn't load (shown on the home screen, never on the paywall).
+    @Published var loadError: String?
 
     var isPro: Bool { customerInfo?.entitlements[RevenueDotConfig.entitlement]?.isActive == true }
     var proExpiry: Date? { customerInfo?.entitlements[RevenueDotConfig.entitlement]?.expirationDate }
     var appUserID: String { Purchases.shared.appUserID }
 
     func load() async {
-        await run("Load") {
+        do {
             // GET /v1/subscribers/{id}/offerings on your RevenueDot server.
             let offerings = try await Purchases.shared.offerings()
-            self.packages = offerings.current?.availablePackages ?? []
-            if offerings.current == nil { self.message = "No current offering. Create one in the RevenueDot dashboard." }
-            return try await Purchases.shared.customerInfo()
+            plans = Plan.from(offerings.current?.availablePackages ?? [])
+            customerInfo = try await Purchases.shared.customerInfo()
+            loadError = nil
+        } catch {
+            loadError = error.localizedDescription
         }
     }
 
@@ -30,23 +34,30 @@ final class PaywallModel: ObservableObject {
         for await info in Purchases.shared.customerInfoStream { customerInfo = info }
     }
 
-    func buy(_ package: Package) async {
+    /// Returns true when the purchase unlocked the entitlement.
+    func purchase(_ package: Package) async -> Bool {
+        busy = true
+        defer { busy = false }
         do {
-            busy = true
-            defer { busy = false }
             // The App Store (or the Test Store alert) takes payment; the SDK then posts it to POST /v1/receipts.
             let result = try await Purchases.shared.purchase(package: package)
             customerInfo = result.customerInfo
-            message = result.userCancelled ? "Purchase cancelled." : "Purchased \(package.identifier)."
+            message = result.userCancelled ? "" : "Welcome to Pro."
+            return !result.userCancelled && isPro
         } catch ErrorCode.purchaseCancelledError {
-            message = "Purchase cancelled."
+            return false
         } catch {
             message = "Purchase failed: \(error.localizedDescription)"
+            return false
         }
     }
 
     /// Restore sends this Apple ID's purchases to RevenueDot; who gets them follows the project's transfer setting.
-    func restore() async { await run("Restore") { try await Purchases.shared.restorePurchases() } }
+    @discardableResult
+    func restore() async -> Bool {
+        await run("Restore") { try await Purchases.shared.restorePurchases() }
+        return isPro
+    }
 
     /// logIn switches to your own user id; an anonymous user's purchases move with them.
     func logIn(_ id: String) async {
@@ -58,7 +69,7 @@ final class PaywallModel: ObservableObject {
         defer { busy = false }
         do {
             customerInfo = try await action()
-            if label != "Load" { message = "\(label): done." }
+            message = "\(label): done."
         } catch {
             message = "\(label) failed: \(error.localizedDescription)"
         }

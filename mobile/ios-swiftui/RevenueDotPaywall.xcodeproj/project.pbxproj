@@ -10,17 +10,23 @@
 		2C35583A6B8EEE96048A89F3 /* RevenueDotPaywallApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5B97BB861D18B8F718CD04 /* RevenueDotPaywallApp.swift */; };
 		43E7E45B68F838C6298EB5CC /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923E9A115ADB7F225369005 /* PaywallView.swift */; };
 		849D702DDF48CABBFEB7162D /* RevenueDotConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8EB591C64CDC6C2877B5E /* RevenueDotConfig.swift */; };
+		910E063E0A35AA269BAF5E20 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE88F98C0C1148054E512D5D /* ContentView.swift */; };
 		B6BE86A814EBDB7F96C69536 /* PaywallModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CCB65FC172A75518763BFB /* PaywallModel.swift */; };
 		BA6BEA57BFBEE25BBF739C7B /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 7C3CD9815A0FE768A5D64DF9 /* RevenueCat */; };
+		BEA332702CF82A5BEADE5ECC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE247302BD3D405FE91CAAD /* Theme.swift */; };
+		CC98BC398D6CB987C02007BE /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8F6AF1AB70D651795007B7 /* Plans.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		393B53026E879503BF0E4F59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6BE247302BD3D405FE91CAAD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		95C8EB591C64CDC6C2877B5E /* RevenueDotConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueDotConfig.swift; sourceTree = "<group>"; };
 		A1CCB65FC172A75518763BFB /* PaywallModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallModel.swift; sourceTree = "<group>"; };
 		AAEF0B40F63C2F2FBF655BAB /* RevenueDotPaywall.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = RevenueDotPaywall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C923E9A115ADB7F225369005 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		DF5B97BB861D18B8F718CD04 /* RevenueDotPaywallApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueDotPaywallApp.swift; sourceTree = "<group>"; };
+		EC8F6AF1AB70D651795007B7 /* Plans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
+		EE88F98C0C1148054E512D5D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,11 +44,14 @@
 		9619809105A17BFF21A8A403 /* RevenueDotPaywall */ = {
 			isa = PBXGroup;
 			children = (
+				EE88F98C0C1148054E512D5D /* ContentView.swift */,
 				393B53026E879503BF0E4F59 /* Info.plist */,
 				A1CCB65FC172A75518763BFB /* PaywallModel.swift */,
 				C923E9A115ADB7F225369005 /* PaywallView.swift */,
+				EC8F6AF1AB70D651795007B7 /* Plans.swift */,
 				95C8EB591C64CDC6C2877B5E /* RevenueDotConfig.swift */,
 				DF5B97BB861D18B8F718CD04 /* RevenueDotPaywallApp.swift */,
+				6BE247302BD3D405FE91CAAD /* Theme.swift */,
 			);
 			path = RevenueDotPaywall;
 			sourceTree = "<group>";
@@ -121,10 +130,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				910E063E0A35AA269BAF5E20 /* ContentView.swift in Sources */,
 				B6BE86A814EBDB7F96C69536 /* PaywallModel.swift in Sources */,
 				43E7E45B68F838C6298EB5CC /* PaywallView.swift in Sources */,
+				CC98BC398D6CB987C02007BE /* Plans.swift in Sources */,
 				849D702DDF48CABBFEB7162D /* RevenueDotConfig.swift in Sources */,
 				2C35583A6B8EEE96048A89F3 /* RevenueDotPaywallApp.swift in Sources */,
+				BEA332702CF82A5BEADE5ECC /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -256,7 +268,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

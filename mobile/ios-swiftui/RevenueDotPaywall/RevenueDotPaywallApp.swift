@@ -20,6 +20,6 @@ struct RevenueDotPaywallApp: App {
     }
 
     var body: some Scene {
-        WindowGroup { PaywallView() }
+        WindowGroup { ContentView() }
     }
 }
