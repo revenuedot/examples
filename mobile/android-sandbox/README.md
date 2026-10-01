@@ -13,7 +13,7 @@ It is built in Jetpack Compose and ships through the Google Play internal testin
 RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
 
 ## Run it
-You need JDK 17 and the Android SDK (platform 35, build-tools 35.0.0). The Gradle wrapper (8.11.1) is included.
+You need JDK 17 and the Android SDK (platform 36, build-tools 35.0.0). If platform 36 is missing, install it with `sdkmanager "platforms;android-36"`. The Gradle wrapper (8.14.5) is included.
 
 ```sh
 export JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
@@ -38,7 +38,8 @@ Signing comes only from Gradle properties (`uploadStoreFile`, `uploadStorePasswo
 - **`.entitlementVerificationMode(EntitlementVerificationMode.DISABLED)`** turns off the check for RevenueCat's response signature. RevenueDot does not sign with RevenueCat's key, so the default mode would log every response as failed verification.
 - **`MainActivity.kt`** uses the coroutine API: `awaitOfferings()`, `awaitCustomerInfo()`, `awaitPurchase(PurchaseParams)`, `awaitRestore()`, `awaitLogIn(id)` and `awaitLogOut()`. It finds `pro_monthly` by package identifier or by Play product id (`pro_monthly` or `pro_monthly:<base plan>`). An `UpdatedCustomerInfoListener` shows renewals that arrive while the app is open.
 - **Permissions:** the SDK's manifest adds `INTERNET` and `ACCESS_NETWORK_STATE`, and Play Billing adds `com.android.vending.BILLING`. The app's own manifest declares none.
-- **`minSdk` 23** is what purchases 10.24.0 declares. The Gradle, Android Gradle Plugin (8.7.3) and Kotlin (2.0.21) versions match the server's Android contract harness, which builds on the same machine.
+- **`minSdk` 23** is what purchases 10.24.0 declares. **`compileSdk` and `targetSdk` are 36** because Google Play rejects new uploads that target API 35. The build uses Android Gradle Plugin 8.13.2, Gradle 8.14.5 and Kotlin 2.0.21.
+- **Version:** `versionCode` 2, `versionName` 1.1. Play keeps every version code it has seen, so raise `versionCode` before each upload.
 
 ### How the Play sandbox test works
 1. **Store setup.** The Play app `app.revenuedot.sandbox` has a subscription `pro_monthly` with a monthly base plan. The RevenueDot project has a Google Play app with a service account and real-time developer notifications ([Connect Google Play](https://revenuedot.app/docs/guides/google-play)), the product `pro_monthly` attached to the `pro` entitlement, and a current offering with a `pro_monthly` package.

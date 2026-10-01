@@ -13,7 +13,7 @@ RevenueDot speaks the same API as the RevenueCat SDKs, so an app points its SDK 
 | Migrate from RevenueCat: importer, catalog copy, notification forwarding, SDK diffs | [`migrate-from-revenuecat`](migrate-from-revenuecat) | Scripts verified between two RevenueDot projects; diffs checked against SDK sources |
 | Mobile: iOS SwiftUI | [`mobile/ios-swiftui`](mobile/ios-swiftui) | Builds for the simulator; ran end to end with the server's `cycle_count` value patched; the server fix has shipped, the example has not been re-run since |
 | Mobile: Android Jetpack Compose | [`mobile/android-compose`](mobile/android-compose) | Written, not run: no Android SDK on the build machine |
-| Mobile: Android Google Play sandbox (`app.revenuedot.sandbox`) | [`mobile/android-sandbox`](mobile/android-sandbox) | Signed release bundle builds with Gradle 8.11.1 and JDK 17; Play internal testing not yet run |
+| Mobile: Android Google Play sandbox (`app.revenuedot.sandbox`) | [`mobile/android-sandbox`](mobile/android-sandbox) | Signed release bundle (target API 36) builds with Gradle 8.14.5 and JDK 17; Play internal testing not yet run |
 | Mobile: Flutter | [`mobile/flutter`](mobile/flutter) | Written, not run: no Flutter SDK on the build machine |
 | Mobile: React Native (Expo) | [`mobile/react-native-expo`](mobile/react-native-expo) | Typecheck and expo-doctor pass; web run verified with a Test Store purchase; native builds unverified |
 | Web: React + Vite + purchases-js | [`web/purchases-js-vite`](web/purchases-js-vite) | Typecheck, build and a Playwright Test Store purchase against a server |

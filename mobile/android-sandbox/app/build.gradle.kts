@@ -14,15 +14,15 @@ val uploadStoreFile = providers.gradleProperty("uploadStoreFile").orNull
 
 android {
     namespace = "app.revenuedot.sandbox"
-    compileSdk = 35
+    compileSdk = 36
     buildToolsVersion = "35.0.0"
 
     defaultConfig {
         applicationId = "app.revenuedot.sandbox"
         minSdk = 23 // what purchases 10.24.0 declares
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        targetSdk = 36
+        versionCode = 2
+        versionName = "1.1"
         buildConfigField("String", "REVENUEDOT_API_KEY", "\"${providers.gradleProperty("revenuedotApiKey").get()}\"")
     }
     signingConfigs {
