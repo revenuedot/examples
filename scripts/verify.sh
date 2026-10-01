@@ -77,7 +77,7 @@ else skip+=("backend/php-laravel-webhook (no php or composer)"); fi
 if has dotnet; then step "backend/csharp-aspnet-webhook" backend/csharp-aspnet-webhook dotnet test tests/Webhook.Tests; else skip+=("backend/csharp-aspnet-webhook (no dotnet)"); fi
 if has mix; then step "backend/elixir-plug-webhook" backend/elixir-plug-webhook bash -c "mix deps.get && mix test"; else skip+=("backend/elixir-plug-webhook (no elixir)"); fi
 
-if has flutter; then step "mobile/flutter" mobile/flutter bash -c "flutter pub get && flutter analyze"; else skip+=("mobile/flutter (no flutter)"); fi
+if has flutter; then step "mobile/flutter" mobile/flutter bash -c "flutter pub get && flutter analyze && flutter test"; else skip+=("mobile/flutter (no flutter)"); fi
 if has xcodebuild && [ "${VERIFY_XCODE:-0}" = 1 ]; then
   step "mobile/ios-swiftui" mobile/ios-swiftui bash -c "xcodebuild -project RevenueDotPaywall.xcodeproj -scheme RevenueDotPaywall -destination 'generic/platform=iOS Simulator' -quiet build"
 else skip+=("mobile/ios-swiftui (set VERIFY_XCODE=1 to build)"); fi

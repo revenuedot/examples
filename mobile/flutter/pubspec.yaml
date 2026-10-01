@@ -1,19 +1,26 @@
-# RevenueDot example: Flutter paywall using purchases_flutter against a RevenueDot server.
+# RevenueDot example: "Focus", a Flutter subscription app using purchases_flutter against a RevenueDot server.
 # Docs: https://revenuedot.app/docs/sdks/flutter   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
-name: revenuedot_paywall
-description: Flutter paywall (offerings, purchase, restore, customer info, logIn) pointed at RevenueDot with setProxyURL.
+name: revenuedot_focus
+description: Focus sample app (onboarding quiz, two-page paywall, home, account) on purchases_flutter pointed at RevenueDot.
 publish_to: none
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.5.0 <4.0.0"
+  sdk: ">=3.6.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   purchases_flutter: ^10.13.2
+  cupertino_icons: ^1.0.8
+  shared_preferences: ^2.3.0
+  url_launcher: ^6.3.0
+  in_app_review: ^2.0.9
+  permission_handler: ^11.3.1
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
   flutter_lints: ^5.0.0
 
 flutter:
