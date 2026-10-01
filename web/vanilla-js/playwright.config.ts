@@ -1,10 +1,15 @@
 // RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
-// This file: Playwright config; starts the Vite dev server (it reads .env / .env.local or the shell for the server URL and key).
+// This file: Playwright config; starts the Vite dev server and loads .env / .env.local so the tests can also ask the server directly.
 // Docs: https://revenuedot.app/docs/sdks/web   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import { defineConfig } from "@playwright/test";
+import { loadEnv } from "vite";
+
+Object.assign(process.env, loadEnv("development", process.cwd(), "VITE_"));
+const port = Number(process.env.PORT ?? 5201);
 
 export default defineConfig({
   testDir: "e2e",
-  use: { baseURL: "http://localhost:5201" },
-  webServer: { command: "npx vite --port 5201 --strictPort", url: "http://localhost:5201", reuseExistingServer: true },
+  workers: 1,
+  use: { baseURL: `http://localhost:${port}` },
+  webServer: { command: `npx vite --port ${port} --strictPort`, url: `http://localhost:${port}`, reuseExistingServer: true },
 });

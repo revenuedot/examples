@@ -2,21 +2,78 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RevenueDot web paywall</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <meta name="description" content="Focus Pro: a daily focus plan, unlimited deep sessions and the distraction shield." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Focus Pro</title>
   </head>
   <body>
-    <main style="font-family: system-ui, sans-serif; max-width: 520px; margin: 40px auto; padding: 0 16px">
-      <h1>Go Pro</h1>
-      <p data-testid="entitlement">…</p>
-      <ul id="packages" style="list-style: none; padding: 0"></ul>
-      <p role="status" data-testid="status">Loading offerings…</p>
-      <form id="login" style="display: flex; gap: 8px">
-        <input id="user-id" placeholder="Your user id" aria-label="User id" />
-        <button type="submit">Log in</button>
-      </form>
-      <p style="color: #666; font-size: 13px">App user id: <code data-testid="app-user-id">…</code></p>
-    </main>
+    <div class="shell">
+      <header class="site-header">
+        <span class="brand"><span class="mark" aria-hidden="true"><span>R</span></span> Focus</span>
+        <span class="caption">A RevenueDot sample app</span>
+      </header>
+      <main class="screen">
+        <!-- The plans page of the paywall. main.ts fills the timeline and the plan cards from the current offering. -->
+        <section id="plans" class="screen__content">
+          <div class="screen__body is-loading" id="plans-body" style="padding-top: 36px" aria-busy="true">
+            <p class="eyebrow">Focus Pro</p>
+            <h1 id="plans-title" class="display display--28" style="margin-top: 10px" tabindex="-1">Choose your plan</h1>
+            <ol class="timeline" id="timeline" style="margin-top: 24px" hidden></ol>
+            <div class="options" role="radiogroup" aria-label="Plans" id="plan-list" style="margin-top: 28px; gap: 14px"></div>
+          </div>
+          <div class="screen__footer">
+            <button class="btn" type="button" id="buy" data-testid="buy">Continue</button>
+            <div class="legal">
+              <p class="legal__check"><span data-icon="check"></span> No commitment, cancel anytime</p>
+              <p class="legal__line" id="disclosure"></p>
+              <p class="legal__links">
+                <a href="https://revenuedot.app/legal/terms" target="_blank" rel="noreferrer">Terms</a>
+                <a href="https://revenuedot.app/legal/privacy" target="_blank" rel="noreferrer">Privacy</a>
+              </p>
+              <p class="legal__line" id="preview-note" hidden>Preview prices. Create an offering in your RevenueDot dashboard to sell real plans.</p>
+              <p class="message" role="status" data-testid="status" id="message"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- After checkout: the result, the entitlement as RevenueDot sees it, and log in for a known user id. -->
+        <section id="success" class="screen__content" hidden>
+          <div class="screen__body" style="padding-top: 48px">
+            <div class="hero-tile" aria-hidden="true"><span data-icon="check" data-size="40"></span><span class="hero-tile__dot"></span></div>
+            <h1 class="display display--40" style="margin-top: 28px" tabindex="-1">You're in.</h1>
+            <p class="subtitle">Focus Pro is on for this account. Open Focus on any device to start.</p>
+            <div class="plan-card" style="margin-top: 28px">
+              <div class="plan-card__head">
+                <span class="status-dot" id="status-dot" aria-hidden="true"></span>
+                <p class="plan-card__title" id="plan-name">Free plan</p>
+              </div>
+              <p class="plan-card__sub" id="plan-sub"></p>
+            </div>
+            <details class="dev" style="margin-top: 32px">
+              <summary><span class="eyebrow">Developer</span><span data-icon="chevronDown" data-size="16"></span></summary>
+              <div class="dev__body">
+                <div class="group">
+                  <div class="field">
+                    <div class="field__text"><span class="field__label">App user id</span><code class="field__value" data-testid="app-user-id">…</code></div>
+                    <button type="button" class="icon-btn" id="copy" aria-label="Copy app user id"><span data-icon="copy" data-size="18"></span></button>
+                  </div>
+                  <div class="field"><div class="field__text"><span class="field__label">Entitlement pro</span><span class="field__value" data-testid="entitlement">…</span></div></div>
+                  <div class="field"><div class="field__text"><span class="field__label">Last action</span><span class="field__value" data-testid="last-action">…</span></div></div>
+                </div>
+                <form class="login" id="login">
+                  <input class="input" id="user-id" placeholder="Your user id" aria-label="User id" autocomplete="off" />
+                  <button type="submit" class="btn btn--small">Log in</button>
+                </form>
+                <p class="credit caption"><span class="mark" aria-hidden="true"><span>R</span></span> Subscriptions by RevenueDot, the open-source RevenueCat alternative.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+      </main>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -1,22 +1,21 @@
 // RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
 // This file: the two-page paywall built from the current offering. Page 1 sells the value in the user's own words;
 // page 2 explains the free trial step by step, shows the plans with annual pre-selected, and the disclosure line.
+// Page 1 reads the visitor's answers from the link (?goal=Study&daily_minutes=30) when a quiz elsewhere sent them.
 // Leaving it offers the shortest plan once. Research: company/docs/research/paywall-onboarding-2026.md
 // Docs: https://revenuedot.app/docs/guides/paywalls   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
-"use client";
 
 import { useEffect, useRef, type MouseEvent } from "react";
-import { PRIVACY_URL, TERMS_URL } from "@/lib/revenuedot";
-import { ctaFor, disclosureFor, type Plan } from "@/lib/plans";
-import { goalOf, minutesOf, obstacleOf, type Answers } from "@/lib/quiz";
-import type { IconName } from "@/lib/icons";
+import { PRIVACY_URL, TERMS_URL } from "./revenuedot";
+import { ctaFor, disclosureFor, type Plan } from "./plans";
+import type { IconName } from "./icons";
 import { Icon, PrimaryButton } from "./ui";
 
 interface PaywallProps {
   className: string;
   autoFocus: boolean;
   page: "value" | "plans";
-  answers: Answers;
+  answers: Record<string, string>;
   plans: Plan[];
   selected: Plan;
   isPreview: boolean;
@@ -47,10 +46,12 @@ export function Paywall(props: PaywallProps) {
 }
 
 function ValuePage({ answers, onContinue }: PaywallProps) {
+  const goal = answers.goal?.toLowerCase();
+  const minutes = Number(answers.daily_minutes) || null;
   const benefits: [IconName, string, string][] = [
-    ["target", `Your ${minutesOf(answers)}-minute daily plan`, `Built for ${goalOf(answers)}, adjusted every week`],
+    ["target", minutes ? `Your ${minutes}-minute daily plan` : "A daily plan built around you", goal ? `Built for ${goal}, adjusted every week` : "Sized to your day, adjusted every week"],
     ["timer", "Unlimited deep sessions", "25, 50 and 90 minutes, or your own length"],
-    ["bellSlash", "Distraction shield", `Silences ${obstacleOf(answers)} while you focus`],
+    ["bellSlash", "Distraction shield", `Silences ${answers.obstacle?.toLowerCase() ?? "notifications"} while you focus`],
     ["chart", "Progress you can see", "Streaks, weekly reports and focus trends"],
   ];
   return (
@@ -58,7 +59,7 @@ function ValuePage({ answers, onContinue }: PaywallProps) {
       <div className="screen__body">
         <p className="eyebrow" style={{ marginTop: 4 }}>Focus Pro</p>
         <h1 className="display display--34" tabIndex={-1} style={{ marginTop: 10 }}>
-          Your plan for {goalOf(answers)} is ready. Unlock it.
+          {goal ? `Your plan for ${goal} is ready. Unlock it.` : "Do your best work, every day."}
         </h1>
         <ul className="benefits" style={{ marginTop: 32 }}>
           {benefits.map(([icon, title, sub]) => (
