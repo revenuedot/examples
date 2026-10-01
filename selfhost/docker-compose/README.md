@@ -14,7 +14,8 @@ Needs Docker (with Compose v2), `curl` and `jq`.
 ```bash
 git clone https://github.com/revenuedot/examples.git
 cd examples/selfhost/docker-compose
-cp .env.example .env          # set POSTGRES_PASSWORD before the first start
+cp .env.example .env          # set POSTGRES_PASSWORD and REVENUEDOT_ENCRYPTION_KEY before the first start
+openssl rand -base64 32       # paste the output after REVENUEDOT_ENCRYPTION_KEY= in .env
 docker compose up -d          # the first start builds the image from source (a few minutes)
 curl http://localhost:8787/v1/health        # {"status":"ok"}
 ./seed.sh
@@ -46,9 +47,15 @@ RD_EMAIL=you@example.com RD_PASSWORD='a-long-password' WEBHOOK_URL=http://host.d
 | `POSTGRES_PASSWORD` | none (required) | Password of the bundled Postgres. It is stored in the volume on the first start; changing it later needs `ALTER USER` in Postgres too |
 | `REVENUEDOT_PORT` | `8787` | Host port for the API and the dashboard |
 | `REVENUEDOT_SOURCE` | `https://github.com/revenuedot/revenuedot.git#main` | Where the image is built from. Point it at a local checkout to run your own changes |
+| `REVENUEDOT_ENCRYPTION_KEY` | empty | Set it before the first start with the output of `openssl rand -base64 32` (the base64 of 32 random bytes). It seals the API keys and tokens of integrations and data exports. Empty falls back to a key derived from `REVENUEDOT_SIGNING_KEY`; with neither, those credentials are stored unencrypted. Back it up with the database: changing or losing it means entering the integrations' keys again |
+| `REVENUEDOT_PUBLIC_URL` | empty (the address each request came in on) | The address people open the dashboard on, such as `https://revenuedot.example.com`, used for links in emails |
+| `REVENUEDOT_ALLOW_SIGNUP` | `false` | Only the first account (the owner) can sign up. `true` lets anyone who can reach the dashboard create an account |
+| `REVENUEDOT_SMTP_URL` | empty (emails go to the log) | SMTP server for password resets, invites, verification links and alerts, such as `smtp://user:password@smtp.example.com:587` (`smtps://` for TLS on port 465). Empty prints every email to `docker compose logs revenuedot` |
+| `REVENUEDOT_MAIL_FROM` | `RevenueDot <no-reply@localhost>` | Sender of those emails |
+| `REVENUEDOT_MAIL_REPLY_TO` | empty | Reply-to address of those emails |
 | `REVENUEDOT_SIGNING_KEY` | unset (signing off) | Optional. Base64 Ed25519 seed that signs SDK responses, for apps that pin this server's public key. `pnpm tsx scripts/signing-keygen.ts` in a `revenuedot/revenuedot` checkout prints it. Compose passes it to the server |
 
-Inside the container the server reads `DATABASE_URL` and `PORT`, which Compose sets, and `REVENUEDOT_SIGNING_KEY`, which Compose passes from `.env`. App Store and Google Play credentials are not environment variables: they belong to each app and are set in the dashboard or through the REST API.
+Inside the container the server reads `DATABASE_URL` and `PORT`, which Compose sets, and the `REVENUEDOT_*` settings above other than `REVENUEDOT_PORT` and `REVENUEDOT_SOURCE`, which Compose passes from `.env`. App Store and Google Play credentials are not environment variables: they belong to each app and are set in the dashboard or through the REST API.
 
 ### Back up, restore, upgrade
 ```bash

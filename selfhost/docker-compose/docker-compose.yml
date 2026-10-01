@@ -16,6 +16,17 @@ services:
       # The server runs its database migrations on start, so upgrades need no extra step.
       DATABASE_URL: postgres://revenuedot:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@db:5432/revenuedot
       PORT: "8787"
+      # Seals integration and data export credentials at rest. Set it in .env before the first start (see .env.example);
+      # empty falls back to a key derived from REVENUEDOT_SIGNING_KEY, and with neither they are stored unencrypted.
+      REVENUEDOT_ENCRYPTION_KEY: ${REVENUEDOT_ENCRYPTION_KEY:-}
+      # The address people open the dashboard on, for links in emails; empty uses the address each request came in on.
+      REVENUEDOT_PUBLIC_URL: ${REVENUEDOT_PUBLIC_URL:-}
+      # Only the first account (the owner) can sign up unless this is true.
+      REVENUEDOT_ALLOW_SIGNUP: ${REVENUEDOT_ALLOW_SIGNUP:-false}
+      # Email through SMTP; empty prints every email (reset and invite links included) to the server log.
+      REVENUEDOT_SMTP_URL: ${REVENUEDOT_SMTP_URL:-}
+      REVENUEDOT_MAIL_FROM: ${REVENUEDOT_MAIL_FROM:-}
+      REVENUEDOT_MAIL_REPLY_TO: ${REVENUEDOT_MAIL_REPLY_TO:-}
       # Signs SDK responses when set in .env; empty leaves signing off. Generate it with scripts/signing-keygen.ts in revenuedot/revenuedot.
       REVENUEDOT_SIGNING_KEY: ${REVENUEDOT_SIGNING_KEY:-}
     depends_on:
