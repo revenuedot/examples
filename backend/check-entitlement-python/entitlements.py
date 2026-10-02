@@ -25,7 +25,8 @@ def get_subscriber(app_user_id: str, base_url: str | None = None, secret_key: st
     # App user ids can hold ":" or "/" (anonymous ids look like $RCAnonymousID:...), so encode every character.
     url = f"{base_url.rstrip('/')}/v1/subscribers/{urllib.parse.quote(app_user_id, safe='')}"
     # Secret key (sk_...): server-side only. A public app key cannot read other users' data this way.
-    request = urllib.request.Request(url, headers={"Authorization": f"Bearer {secret_key}", "Accept": "application/json"})
+    # Send a real User-Agent: Cloudflare's Browser Integrity Check rejects urllib's default one with error 1010.
+    request = urllib.request.Request(url, headers={"Authorization": f"Bearer {secret_key}", "Accept": "application/json", "User-Agent": "revenuedot-example-python/1.0"})
     try:
         with urllib.request.urlopen(request, timeout=timeout) as response:
             # 201 means this call created the subscriber (an id RevenueDot had not seen), exactly as RevenueCat does.
