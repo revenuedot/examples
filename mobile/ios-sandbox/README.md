@@ -19,7 +19,9 @@ xcodegen generate     # writes RevenueDotSandbox.xcodeproj from project.yml
 # Simulator build (the simulator has no App Store products, so the offering shows a configuration error):
 xcodebuild -project RevenueDotSandbox.xcodeproj -scheme RevenueDotSandbox -destination 'platform=iOS Simulator,name=iPhone 17 Pro' CODE_SIGNING_ALLOWED=NO build
 # Device build, signed with your team (project.yml sets DEVELOPMENT_TEAM; change it to yours):
-xcodebuild -project RevenueDotSandbox.xcodeproj -scheme RevenueDotSandbox -destination 'generic/platform=iOS' -allowProvisioningUpdates REVENUEDOT_API_KEY=appl_... build
+xcodebuild -project RevenueDotSandbox.xcodeproj -scheme RevenueDotSandbox -destination 'generic/platform=iOS' -allowProvisioningUpdates -derivedDataPath build REVENUEDOT_API_KEY=appl_... build
+# Install on a connected iPhone (find its identifier with `xcrun devicectl list devices`):
+xcrun devicectl device install app --device <device-id> build/Build/Products/Debug-iphoneos/RevenueDotSandbox.app
 ```
 
 Or open the project in Xcode, pick your iPhone and press Run. On the phone, sign in under Settings, App Store, Sandbox Account with the sandbox tester, tap **Subscribe**, and the sandbox sheet appears. The purchase reaches RevenueDot through the SDK and, a few minutes later, through Apple's server notifications.
@@ -32,6 +34,7 @@ The key is the public app key (`appl_...`) of the RevenueDot project's App Store
 - **`Plans.swift`** turns the current offering into paywall plans: billed price, price per week, the annual savings and the free-trial length. With no offering yet, the paywall shows preview plans so the design still renders.
 - **`Onboarding.swift`**, **`Paywall.swift`**, **`Home.swift`** and **`Settings.swift`** are the screens; **`Theme.swift`** holds the tokens and shared controls.
 - **`SandboxConfig.swift`** reads the key from Info.plist, which takes it from the `REVENUEDOT_API_KEY` build setting, and holds the Terms and Privacy links the paywall must show.
+- **`Assets.xcassets/AppIcon`** is the RevenueDot app icon: one 1024×1024 full-bleed PNG with no transparency (iOS rounds the corners), from which Xcode makes every size.
 - **Screenshots:** debug builds open any screen directly with `xcrun simctl launch booted app.revenuedot.sandbox -RDScreen paywall` (also `welcome`, `goal`, `insight`, `reminders`, `building`, `plan`, `plans`, `home`, `settings`).
 
 Connect the App Store first: [Connect the App Store](https://revenuedot.app/docs/guides/app-store) and [Sandbox testing](https://revenuedot.app/docs/guides/sandbox-testing).

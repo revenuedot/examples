@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C35583A6B8EEE96048A89F3 /* RevenueDotPaywallApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5B97BB861D18B8F718CD04 /* RevenueDotPaywallApp.swift */; };
 		43E7E45B68F838C6298EB5CC /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923E9A115ADB7F225369005 /* PaywallView.swift */; };
+		69571E533654FFC96E202D46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB8D0CC0F510A6694FA1D14 /* Assets.xcassets */; };
 		849D702DDF48CABBFEB7162D /* RevenueDotConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8EB591C64CDC6C2877B5E /* RevenueDotConfig.swift */; };
 		910E063E0A35AA269BAF5E20 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE88F98C0C1148054E512D5D /* ContentView.swift */; };
 		B6BE86A814EBDB7F96C69536 /* PaywallModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CCB65FC172A75518763BFB /* PaywallModel.swift */; };
@@ -25,6 +26,7 @@
 		AAEF0B40F63C2F2FBF655BAB /* RevenueDotPaywall.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = RevenueDotPaywall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C923E9A115ADB7F225369005 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		DF5B97BB861D18B8F718CD04 /* RevenueDotPaywallApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueDotPaywallApp.swift; sourceTree = "<group>"; };
+		EBB8D0CC0F510A6694FA1D14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC8F6AF1AB70D651795007B7 /* Plans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
 		EE88F98C0C1148054E512D5D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -44,6 +46,7 @@
 		9619809105A17BFF21A8A403 /* RevenueDotPaywall */ = {
 			isa = PBXGroup;
 			children = (
+				EBB8D0CC0F510A6694FA1D14 /* Assets.xcassets */,
 				EE88F98C0C1148054E512D5D /* ContentView.swift */,
 				393B53026E879503BF0E4F59 /* Info.plist */,
 				A1CCB65FC172A75518763BFB /* PaywallModel.swift */,
@@ -80,6 +83,7 @@
 			buildConfigurationList = 7E974C41D0256646E13281A5 /* Build configuration list for PBXNativeTarget "RevenueDotPaywall" */;
 			buildPhases = (
 				68D5685FECBB59D753EA258E /* Sources */,
+				A666DE2A5B8A270D8AB5E420 /* Resources */,
 				F8EE97E1C3086EC35E0EA053 /* Frameworks */,
 			);
 			buildRules = (
@@ -124,6 +128,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A666DE2A5B8A270D8AB5E420 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69571E533654FFC96E202D46 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		68D5685FECBB59D753EA258E /* Sources */ = {

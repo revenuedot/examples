@@ -38,6 +38,7 @@ Keep these in mind:
 - **Access check:** `customerInfo.entitlements["pro"]?.isActive == true`.
 - **`Plans.swift`** turns the current offering's packages into plans: billed price, price per week, the annual savings against the shortest plan, and the free-trial length from the product's introductory offer. With no offering yet, the paywall shows preview plans and buying is off.
 - **`PaywallView.swift`** is the paywall; copy it with **`Theme.swift`** (tokens, buttons, the selection dot) and **`Plans.swift`** into your app and present it with `.fullScreenCover`. Replace the benefit lines, and set `termsURL`, `privacyURL` and (only once you have one) `review` in `RevenueDotConfig.swift`.
+- **`Assets.xcassets/AppIcon`** is the RevenueDot app icon: one 1024×1024 full-bleed PNG with no transparency, from which Xcode makes every size. Replace that PNG with your own icon.
 - **Screenshots:** debug builds open the paywall directly with `xcrun simctl launch booted com.example.revenuedot.paywall -RDScreen paywall` (or `plans` for page two).
 
 ## Migrate from RevenueCat
