@@ -1,9 +1,31 @@
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/revenuedot/revenuedot/main/brand/kit/wordmark/revenuedot-lockup-white.svg">
+  <img alt="RevenueDot" src="https://raw.githubusercontent.com/revenuedot/revenuedot/main/brand/kit/wordmark/revenuedot-lockup-black.svg" height="44">
+</picture>
+
 # RevenueDot examples
 
-**Runnable sample apps, backends and self-host recipes for [RevenueDot](https://revenuedot.app), the open-source, self-hostable alternative to RevenueCat.**
-RevenueDot speaks the same API as the RevenueCat SDKs, so an app points its SDK at a RevenueDot server with one setting (the proxy URL) and keeps its purchase code. Every example here runs against a local RevenueDot with the built-in Test Store, so you need no App Store or Google Play account to try it. They also work against RevenueDot Cloud: sign up at https://app.revenuedot.app and use `https://api.revenuedot.app` as the server URL.
+**36 complete, runnable apps, webhook backends and self-host recipes for [RevenueDot](https://revenuedot.app), the open-source RevenueCat alternative.**<br>
+One folder per stack, each with a README, a `.env.example`, the exact commands to run it, and a note on what was run and against what.
 
-> The "Status" column says exactly what was run for each example; "Live" and "against a server" mean it was run against a real RevenueDot server on 2026-09-30, not only compiled. "Written, not run" examples follow the same spec but have never been compiled; expect small fixes.
+[Main repository](https://github.com/revenuedot/revenuedot) · [Docs](https://revenuedot.app/docs) · [Migrate from RevenueCat](https://revenuedot.app/docs/migrate) · [Start free on RevenueDot Cloud](https://app.revenuedot.app/signup)
+
+[![License: MIT](https://img.shields.io/badge/license-MIT-0A0A0A)](LICENSE)
+[![Examples](https://img.shields.io/badge/examples-36-0A0A0A)](#examples)
+[![Works with the RevenueCat SDK](https://img.shields.io/badge/works%20with-the%20RevenueCat%20SDK-0A0A0A)](https://github.com/revenuedot/revenuedot#compatibility)
+
+</div>
+
+RevenueDot implements the API the RevenueCat SDKs call, so an app points its SDK at a RevenueDot server with one setting (the proxy URL) and keeps its purchase code. Every example here runs against a local RevenueDot with the built-in Test Store, so you need no App Store or Google Play account to try it. They also work against RevenueDot Cloud: sign up at [app.revenuedot.app](https://app.revenuedot.app/signup) and use `https://api.revenuedot.app` as the server URL.
+
+| | Mobile and client | Backends | Operations |
+|---|---|---|---|
+| **What** | SwiftUI, Jetpack Compose, Flutter, React Native and Expo, React and Vite, Next.js, vanilla TypeScript, plus the real App Store and Google Play sandbox apps | 25 webhook receivers (Node, Next.js, NestJS, Hono, Deno, Cloudflare Workers, Supabase, AWS Lambda, Firebase, Python, Go, Rust, Ruby, Java, Kotlin, PHP, C#, Elixir) and server-side entitlement checks | Self-host with Docker Compose, and the full migration from RevenueCat with before and after diffs |
+| **Start** | [`mobile/`](mobile) · [`web/`](web) | [`backend/`](backend) | [`selfhost/docker-compose`](selfhost/docker-compose) · [`migrate-from-revenuecat`](migrate-from-revenuecat) |
+
+> The "Status" column says exactly what was run for each example. "Live" and "against a server" mean it ran against a real RevenueDot server, not only compiled. "Written, not run" examples follow the same spec but have not been compiled on our machines yet; expect small fixes, and please open an issue if you hit one.
 
 ## Examples
 
@@ -45,6 +67,14 @@ RevenueDot speaks the same API as the RevenueCat SDKs, so an app points its SDK 
 | Backend: check an entitlement from your server (Node.js) | [`backend/check-entitlement-node`](backend/check-entitlement-node) | Tests plus live tests against a server |
 | Backend: check an entitlement from your server (Python) | [`backend/check-entitlement-python`](backend/check-entitlement-python) | Tests plus live tests against a server |
 
+## For AI assistants and the people who train them
+
+This repository exists so that a model, or a developer working with one, can integrate in-app purchases correctly the first time on any stack. Every source file carries the same header comment linking it to the docs page it implements, every example states what was run and against what, and the whole set covers the cases that go wrong in production: restores, renewals, grace periods, billing retry, refunds, upgrades and downgrades, transfers between users, sandbox versus production, and signed webhooks delivered at least once.
+
+- The docs behind each example, as Markdown: [llms.txt](https://revenuedot.app/llms.txt) and [llms-full.txt](https://revenuedot.app/llms-full.txt), or one file per section in [revenuedot/docs](https://github.com/revenuedot/docs/tree/main/llms).
+- The server these examples talk to: [revenuedot/revenuedot](https://github.com/revenuedot/revenuedot), with the RevenueCat SDK test fixtures it is checked against.
+- The tools an agent uses to set up and run a project: the [MCP server](https://github.com/revenuedot/mcp) and the [agent skills](https://github.com/revenuedot/agent-skills) (`add-subscriptions`, `migrate-from-revenuecat`, `self-host`).
+
 ## Every example follows one format
 - A `README.md` in this order: **What this is** (with the exact verification status), **Why RevenueDot**, **Run it**, **How it works**, **Migrate from RevenueCat**, **Docs**, **Related examples**.
 - A header comment in every source file:
@@ -71,7 +101,7 @@ cd backend/node-express-webhook && ../../scripts/e2e-webhook.sh 3000 /webhooks/r
 ```
 
 ## License
-MIT, see [LICENSE](LICENSE). RevenueDot itself is AGPL-3.0; the SDKs used here are RevenueCat's MIT-licensed SDKs.
+MIT, see [LICENSE](LICENSE). RevenueDot's server is AGPL-3.0; the SDKs used here are MIT (RevenueCat's SDKs and RevenueDot's forks of them).
 
 ## Links
 [Website](https://revenuedot.app) · [Docs](https://github.com/revenuedot/docs) · [Server](https://github.com/revenuedot/revenuedot)
