@@ -25,7 +25,7 @@ RevenueDot implements the API the RevenueCat SDKs call, so an app points its SDK
 | **What** | SwiftUI, Jetpack Compose, Flutter, React Native and Expo, React and Vite, Next.js, vanilla TypeScript, plus the real App Store and Google Play sandbox apps | 25 webhook receivers (Node, Next.js, NestJS, Hono, Deno, Cloudflare Workers, Supabase, AWS Lambda, Firebase, Python, Go, Rust, Ruby, Java, Kotlin, PHP, C#, Elixir) and server-side entitlement checks | Self-host with Docker Compose, and the full migration from RevenueCat with before and after diffs |
 | **Start** | [`mobile/`](mobile) · [`web/`](web) | [`backend/`](backend) | [`selfhost/docker-compose`](selfhost/docker-compose) · [`migrate-from-revenuecat`](migrate-from-revenuecat) |
 
-> The "Status" column says exactly what was run for each example. "Live" and "against a server" mean it ran against a real RevenueDot server, not only compiled. "Written, not run" examples follow the same spec but have not been compiled on our machines yet; expect small fixes, and please open an issue if you hit one.
+> The "Status" column says exactly what was run for each example and when. "Live" and "against a server" mean it ran against a real RevenueDot server, not only compiled. Every example has been built and run at least once on our machines; what is still unverified (a real store purchase, a deploy) is named in its row. Please open an issue if you hit a problem.
 
 ## Examples
 
