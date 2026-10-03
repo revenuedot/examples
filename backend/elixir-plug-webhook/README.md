@@ -3,7 +3,7 @@
 ## What this is
 A Plug router served by Bandit with `POST /webhooks/revenuedot` that verifies the HMAC signature of each RevenueDot webhook, ignores duplicate deliveries and acts on the event type. `lib/revenuedot_webhook/signature.ex` uses only `:crypto` and `Plug.Crypto` and can be copied as is.
 
-**Status: not verified locally: the Mac that wrote it has no Elixir, so `mix test` has not run and there is no `mix.lock` yet.** The code follows the Plug 1.18, Bandit 1.x and ExUnit docs. Expect small fixes, and commit the `mix.lock` that `mix deps.get` creates.
+**Status: verified.** `mix deps.get` resolves the committed `mix.lock` (Plug 1.20.3, Bandit 1.12.5) and `mix test` (2 tests, with a real signed delivery captured from a RevenueDot server) passes on Elixir 1.20.4 with Erlang/OTP 29. Also tested live on 2026-10-03 with [`scripts/e2e-webhook.sh`](../../scripts/e2e-webhook.sh): a local RevenueDot signed and delivered a Test Store `INITIAL_PURCHASE` to `mix run --no-halt` and recorded `delivered`, HTTP 200.
 
 ## Why RevenueDot
 RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.

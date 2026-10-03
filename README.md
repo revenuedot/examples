@@ -63,7 +63,7 @@ RevenueDot implements the API the RevenueCat SDKs call, so an app points its SDK
 | Backend: PHP (no framework) | [`backend/php-webhook`](backend/php-webhook) | Tests on PHP 8.5; Live: a real RevenueDot delivered a signed `INITIAL_PURCHASE` ([`e2e-webhook.sh`](scripts/e2e-webhook.sh)), 2026-10-03 |
 | Backend: PHP + Laravel | [`backend/php-laravel-webhook`](backend/php-laravel-webhook) | Tests on PHP 8.5 and Laravel 12.69; Live: a real RevenueDot delivered a signed `INITIAL_PURCHASE` ([`e2e-webhook.sh`](scripts/e2e-webhook.sh)), 2026-10-03 |
 | Backend: C# + ASP.NET Core | [`backend/csharp-aspnet-webhook`](backend/csharp-aspnet-webhook) | Tests on .NET SDK 9.0.318; Live: a real RevenueDot delivered a signed `INITIAL_PURCHASE` ([`e2e-webhook.sh`](scripts/e2e-webhook.sh)), 2026-10-03 |
-| Backend: Elixir + Plug | [`backend/elixir-plug-webhook`](backend/elixir-plug-webhook) | Written, not run: no Elixir on the build machine |
+| Backend: Elixir + Plug | [`backend/elixir-plug-webhook`](backend/elixir-plug-webhook) | Tests on Elixir 1.20 and Plug 1.20; Live: a real RevenueDot delivered a signed `INITIAL_PURCHASE` ([`e2e-webhook.sh`](scripts/e2e-webhook.sh)), 2026-10-03 |
 | Backend: check an entitlement from your server (Node.js) | [`backend/check-entitlement-node`](backend/check-entitlement-node) | Tests plus live tests against a server |
 | Backend: check an entitlement from your server (Python) | [`backend/check-entitlement-python`](backend/check-entitlement-python) | Tests plus live tests against a server |
 
