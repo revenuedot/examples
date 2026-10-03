@@ -100,6 +100,14 @@ This repository exists so that a model, or a developer working with one, can int
 cd backend/node-express-webhook && ../../scripts/e2e-webhook.sh 3000 /webhooks/revenuedot -- node src/server.js
 ```
 
+## Use with your coding agent
+
+Coding agents can read this repository on demand, so they use the right package, imports and API:
+
+- **Context7:** https://context7.com/revenuedot/examples
+- **DeepWiki:** https://deepwiki.com/revenuedot/examples
+- **GitMCP:** https://gitmcp.io/revenuedot/examples
+
 ## License
 MIT, see [LICENSE](LICENSE). RevenueDot's server is AGPL-3.0; the SDKs used here are MIT (RevenueCat's SDKs and RevenueDot's forks of them).
 

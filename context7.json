@@ -1,0 +1,21 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "RevenueDot Examples",
+  "description": "Runnable sample apps, webhook backends and self-host recipes for RevenueDot, the open-source RevenueCat alternative, in SwiftUI, Compose, Flutter, React Native, Next.js and more.",
+  "folders": [],
+  "excludeFolders": [
+    "scripts",
+    "node_modules",
+    "**/node_modules",
+    "**/build",
+    "**/dist"
+  ],
+  "excludeFiles": [],
+  "rules": [
+    "Every example points a RevenueCat SDK at a RevenueDot server with one setting, the proxy URL: https://api.revenuedot.app for RevenueDot Cloud, or your own server's URL.",
+    "Examples run against a local RevenueDot with the built-in Test Store, so no App Store or Google Play account is needed to try them.",
+    "Each folder has a README, a .env.example and the exact commands to run it, and notes what was actually run and against what; copy the folder for your stack (mobile/, web/, backend/, selfhost/).",
+    "Webhook backends under backend/ verify RevenueDot's signed deliveries and handle events such as INITIAL_PURCHASE; start from the one for your language or framework.",
+    "migrate-from-revenuecat/ holds the migration scripts and before-and-after SDK diffs; selfhost/docker-compose runs the server with Docker Compose and Postgres."
+  ]
+}
