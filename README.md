@@ -34,7 +34,7 @@ RevenueDot implements the API the RevenueCat SDKs call, so an app points its SDK
 | Self-host: Docker Compose + Postgres, seed script | [`selfhost/docker-compose`](selfhost/docker-compose) | Verified: built from GitHub, started, seeded, backed up, restored, rebuilt |
 | Migrate from RevenueCat: importer, catalog copy, notification forwarding, SDK diffs | [`migrate-from-revenuecat`](migrate-from-revenuecat) | Scripts verified between two RevenueDot projects; diffs checked against SDK sources |
 | Mobile: iOS SwiftUI | [`mobile/ios-swiftui`](mobile/ios-swiftui) | Builds for the simulator; ran end to end with the server's `cycle_count` value patched; the server fix has shipped, the example has not been re-run since |
-| Mobile: Android Jetpack Compose | [`mobile/android-compose`](mobile/android-compose) | Written, not run: no Android SDK on the build machine |
+| Mobile: Android Jetpack Compose | [`mobile/android-compose`](mobile/android-compose) | Debug build with Gradle 8.14.5 and JDK 17; ran on a Pixel 7 API 35 emulator and completed a Test Store purchase against a local RevenueDot (`pro` entitlement active on the server), 2026-10-03 |
 | Mobile: Android Google Play sandbox (`app.revenuedot.sandbox`) | [`mobile/android-sandbox`](mobile/android-sandbox) | Signed release bundle (target API 36) builds with Gradle 8.14.5 and JDK 17; Play internal testing not yet run |
 | Mobile: Flutter | [`mobile/flutter`](mobile/flutter) | Written, not run: no Flutter SDK on the build machine |
 | Mobile: React Native (Expo) | [`mobile/react-native-expo`](mobile/react-native-expo) | Typecheck and expo-doctor pass; web run verified with a Test Store purchase; native builds unverified |
