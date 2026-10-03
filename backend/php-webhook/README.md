@@ -3,7 +3,7 @@
 ## What this is
 A plain PHP 8 endpoint (no framework, no Composer) at `POST /webhooks/revenuedot` that verifies the HMAC signature of each RevenueDot webhook, ignores duplicate deliveries and acts on the event type. `public/index.php` reads the body with `file_get_contents('php://input')`; `src/verify.php` uses only `hash_hmac` and `hash_equals` and can be copied into any PHP app.
 
-**Status: not verified locally: the Mac that wrote it has no PHP.** The code uses only PHP 8 core functions, and `php tests/run.php` runs a real signed delivery captured from a RevenueDot server. Expect small fixes.
+**Status: verified.** `php tests/run.php` (9 checks: signature verification plus the handler answering 200, deduping a retry and refusing bad signatures and authorization, with a real signed delivery captured from a RevenueDot server) passes on PHP 8.5.11. Also tested live on 2026-10-03 with [`scripts/e2e-webhook.sh`](../../scripts/e2e-webhook.sh): a local RevenueDot signed and delivered a Test Store `INITIAL_PURCHASE` to `php -S localhost:3000 -t public public/index.php` and recorded `delivered`, HTTP 200.
 
 ## Why RevenueDot
 RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
