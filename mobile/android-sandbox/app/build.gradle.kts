@@ -20,7 +20,7 @@ android {
 
     defaultConfig {
         applicationId = "app.revenuedot.sandbox"
-        minSdk = 23 // what purchases 10.24.0 declares
+        minSdk = 24 // Play automatic protection needs 24+ (purchases 10.24.0 declares 23)
         targetSdk = 36
         versionCode = 3
         versionName = "1.2"
@@ -39,7 +39,9 @@ android {
     }
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
             if (uploadStoreFile != null) signingConfig = signingConfigs.getByName("upload")
         }
     }
