@@ -3,7 +3,7 @@
 ## What this is
 A Ktor 3 server (Netty, Kotlin 2.2, JDK 21) with `POST /webhooks/revenuedot` that verifies the HMAC signature of each RevenueDot webhook, ignores duplicate deliveries and acts on the event type. The route reads the body with `call.receive<ByteArray>()` so the signature is checked on the exact bytes. `Verify.kt` uses only the JDK and can be copied into any Kotlin or Java server. The build is Maven, so no Gradle install is needed.
 
-**Status: not verified locally: the Mac that wrote it has no JDK 21 or Maven.** The code follows the Ktor 3 server and `testApplication` APIs, and `mvn test` runs a real signed delivery captured from a RevenueDot server. Expect small fixes.
+**Status: verified.** `mvn test` (2 tests through Ktor's `testApplication`, with a real signed delivery captured from a RevenueDot server) passes on JDK 21.0.12 with Maven 3.9.16, Kotlin 2.2.20 and Ktor 3.3.0. Also tested live on 2026-10-03 with [`scripts/e2e-webhook.sh`](../../scripts/e2e-webhook.sh): a local RevenueDot signed and delivered a Test Store `INITIAL_PURCHASE` to `mvn compile exec:java` and recorded `delivered`, HTTP 200.
 
 ## Why RevenueDot
 RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
