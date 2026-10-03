@@ -3,7 +3,7 @@
 ## What this is
 A Spring Boot 3.5 app (Java 21) with `POST /webhooks/revenuedot` that verifies the HMAC signature of each RevenueDot webhook, ignores duplicate deliveries and acts on the event type. The controller takes the body as `byte[]` so the signature is checked on the exact bytes. `WebhookSignature.java` uses only the JDK and can be copied into any Java server.
 
-**Status: not verified locally: the Mac that wrote it has no JDK 21 or Maven.** The code follows the Spring Boot 3.5 and Spring MVC test APIs, and `mvn test` runs a real signed delivery captured from a RevenueDot server. Expect small fixes.
+**Status: verified.** `mvn test` (3 tests: the signature unit tests and `WebhookControllerTest` through `MockMvc`, with a real signed delivery captured from a RevenueDot server) passes on JDK 21.0.12 with Maven 3.9.16 and Spring Boot 3.5.6. Also tested live on 2026-10-03 with [`scripts/e2e-webhook.sh`](../../scripts/e2e-webhook.sh): a local RevenueDot signed and delivered a Test Store `INITIAL_PURCHASE` to `mvn spring-boot:run` and recorded `delivered`, HTTP 200.
 
 ## Why RevenueDot
 RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.

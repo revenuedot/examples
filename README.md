@@ -58,7 +58,7 @@ RevenueDot implements the API the RevenueCat SDKs call, so an app points its SDK
 | Backend: Rust + axum | [`backend/rust-axum-webhook`](backend/rust-axum-webhook) | Tests; Live: a real RevenueDot delivered a signed `INITIAL_PURCHASE` ([`e2e-webhook.sh`](scripts/e2e-webhook.sh)) |
 | Backend: Ruby + Sinatra | [`backend/ruby-sinatra-webhook`](backend/ruby-sinatra-webhook) | Tests; Live: a real RevenueDot delivered a signed `INITIAL_PURCHASE` ([`e2e-webhook.sh`](scripts/e2e-webhook.sh)) |
 | Backend: Ruby on Rails | [`backend/ruby-rails-webhook`](backend/ruby-rails-webhook) | Tests; Live: a real RevenueDot delivered a signed `INITIAL_PURCHASE` ([`e2e-webhook.sh`](scripts/e2e-webhook.sh)) |
-| Backend: Java + Spring Boot | [`backend/java-spring-boot-webhook`](backend/java-spring-boot-webhook) | Written, not run: no JDK 21 or Maven on the build machine |
+| Backend: Java + Spring Boot | [`backend/java-spring-boot-webhook`](backend/java-spring-boot-webhook) | Tests on JDK 21 and Spring Boot 3.5.6; Live: a real RevenueDot delivered a signed `INITIAL_PURCHASE` ([`e2e-webhook.sh`](scripts/e2e-webhook.sh)), 2026-10-03 |
 | Backend: Kotlin + Ktor | [`backend/kotlin-ktor-webhook`](backend/kotlin-ktor-webhook) | Written, not run: no JDK 21 or Maven on the build machine |
 | Backend: PHP (no framework) | [`backend/php-webhook`](backend/php-webhook) | Written, not run: no PHP on the build machine |
 | Backend: PHP + Laravel | [`backend/php-laravel-webhook`](backend/php-laravel-webhook) | Written, not run: no PHP or Composer on the build machine |
