@@ -61,7 +61,7 @@ RevenueDot implements the API the RevenueCat SDKs call, so an app points its SDK
 | Backend: Java + Spring Boot | [`backend/java-spring-boot-webhook`](backend/java-spring-boot-webhook) | Tests on JDK 21 and Spring Boot 3.5.6; Live: a real RevenueDot delivered a signed `INITIAL_PURCHASE` ([`e2e-webhook.sh`](scripts/e2e-webhook.sh)), 2026-10-03 |
 | Backend: Kotlin + Ktor | [`backend/kotlin-ktor-webhook`](backend/kotlin-ktor-webhook) | Tests on JDK 21, Kotlin 2.2.20 and Ktor 3.3.0; Live: a real RevenueDot delivered a signed `INITIAL_PURCHASE` ([`e2e-webhook.sh`](scripts/e2e-webhook.sh)), 2026-10-03 |
 | Backend: PHP (no framework) | [`backend/php-webhook`](backend/php-webhook) | Tests on PHP 8.5; Live: a real RevenueDot delivered a signed `INITIAL_PURCHASE` ([`e2e-webhook.sh`](scripts/e2e-webhook.sh)), 2026-10-03 |
-| Backend: PHP + Laravel | [`backend/php-laravel-webhook`](backend/php-laravel-webhook) | Written, not run: no PHP or Composer on the build machine |
+| Backend: PHP + Laravel | [`backend/php-laravel-webhook`](backend/php-laravel-webhook) | Tests on PHP 8.5 and Laravel 12.69; Live: a real RevenueDot delivered a signed `INITIAL_PURCHASE` ([`e2e-webhook.sh`](scripts/e2e-webhook.sh)), 2026-10-03 |
 | Backend: C# + ASP.NET Core | [`backend/csharp-aspnet-webhook`](backend/csharp-aspnet-webhook) | Written, not run: no .NET SDK on the build machine |
 | Backend: Elixir + Plug | [`backend/elixir-plug-webhook`](backend/elixir-plug-webhook) | Written, not run: no Elixir on the build machine |
 | Backend: check an entitlement from your server (Node.js) | [`backend/check-entitlement-node`](backend/check-entitlement-node) | Tests plus live tests against a server |
