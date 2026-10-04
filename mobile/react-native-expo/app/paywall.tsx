@@ -6,6 +6,7 @@ import { useState } from "react";
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from "react-native";
 import type { PurchasesPackage } from "react-native-purchases";
 import { usePurchases } from "../lib/purchases";
+import { errorText } from "../lib/revenuedot";
 import { useTheme } from "../lib/theme";
 
 export default function Paywall() {
@@ -26,7 +27,7 @@ export default function Paywall() {
       if (await action()) router.back();
       else setNote(none);
     } catch (e) {
-      setNote(e instanceof Error ? e.message : String(e));
+      setNote(errorText(e));
     } finally {
       setBusy(false);
     }

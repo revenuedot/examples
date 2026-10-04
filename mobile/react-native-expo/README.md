@@ -3,17 +3,17 @@
 ## What this is
 A clean Expo Router app (Expo SDK 57) with subscriptions already working: a paywall screen that lists your offering, buying, **Restore purchases**, an entitlement gate (`<ProGate>`) around the paid part of the app, and a setup script for the built-in Test Store, so it runs without an App Store or Google Play account. It uses RevenueCat's `react-native-purchases` API through RevenueDot's fork, installed as an npm alias, so every RevenueCat tutorial still applies.
 
-**Status:** `npm run typecheck`, `expo-doctor` (21 of 21 checks) and `expo export` for iOS and web pass, and the project scaffolds with the one-line command below. The purchase flow itself has not been run in this starter; its SDK calls are the same ones the [Focus sample](../react-native-expo-focus) ran against a RevenueDot server (Test Store purchase on the web, entitlement turning active). No simulator run, no Android build.
+**Status:** `npm run typecheck`, `expo-doctor` (21 of 21 checks) and `expo export` for iOS and web pass, and the project scaffolds, installs, typechecks and exports from a clean folder with the install line below. The web build was opened in a browser; it shows the home screen and paywall, and the "not connected" card when the key is wrong. The purchase flow itself has not been run in this starter; its SDK calls are the same ones the [Focus sample](../react-native-expo-focus) ran against a RevenueDot server (Test Store purchase on the web, entitlement turning active). No simulator run, no Android build.
 
 ## Why RevenueDot
 RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so an app switches by setting one proxy URL.
 
 ## Install
-One line, then answer the folder-name prompt:
+One line, then `cd` into the folder:
 ```bash
-npx create-expo-app --example https://github.com/revenuedot/examples/tree/main/mobile/react-native-expo
+npx degit revenuedot/examples/mobile/react-native-expo my-app && cd my-app && npm install
 ```
-That downloads this folder and runs `npm install`. (`create-expo-app` reads the URL, so the same line works for a fork or a branch.)
+`degit` copies only this folder, without git history. (`npx create-expo-app --example` accepts only example names from [expo/examples](https://github.com/expo/examples), not URLs, so it works for this starter only after `with-revenuedot` is accepted there; then it is `npx create-expo-app my-app --example with-revenuedot`.)
 
 ## Run it
 You need a RevenueDot project with a Test Store app. Create a free account at https://app.revenuedot.app/signup, confirm your email, then in the new project folder:

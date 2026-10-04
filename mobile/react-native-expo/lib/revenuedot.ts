@@ -31,3 +31,10 @@ export function configureRevenueDot(): Promise<void> {
   })();
   return configured;
 }
+
+/** The SDK rejects with plain objects ({ message, code, ... }), not Error instances, so read the message from either. */
+export function errorText(e: unknown): string {
+  if (e instanceof Error) return e.message;
+  if (typeof e === "object" && e && "message" in e) return String((e as { message: unknown }).message);
+  return String(e);
+}

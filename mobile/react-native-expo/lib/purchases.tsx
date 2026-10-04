@@ -3,7 +3,7 @@
 // Docs: https://revenuedot.app/docs/sdks/react-native   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import Purchases, { type CustomerInfo, type PurchasesOffering, type PurchasesPackage } from "react-native-purchases";
-import { ENTITLEMENT, configureRevenueDot } from "./revenuedot";
+import { ENTITLEMENT, configureRevenueDot, errorText } from "./revenuedot";
 
 type State = {
   /** "loading" until the first customer info and offerings arrive, "error" when configuration or the network fails. */
@@ -38,7 +38,7 @@ export function PurchasesProvider({ children }: { children: ReactNode }) {
       setError(null);
       setStatus("ready");
     } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
+      setError(errorText(e));
       setStatus("error");
     }
   }, []);

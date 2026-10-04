@@ -6,7 +6,7 @@ import { ActivityIndicator, Pressable, ScrollView, Text, View } from "react-nati
 import Purchases from "react-native-purchases";
 import { ProGate } from "../lib/ProGate";
 import { usePurchases } from "../lib/purchases";
-import { ENTITLEMENT, serverHost } from "../lib/revenuedot";
+import { ENTITLEMENT, errorText, serverHost } from "../lib/revenuedot";
 import { useTheme } from "../lib/theme";
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
     try {
       setNote((await restore()) ? "Restored: Pro is active." : "Nothing to restore for this account.");
     } catch (e) {
-      setNote(e instanceof Error ? e.message : String(e));
+      setNote(errorText(e));
     } finally {
       setBusy(false);
     }
