@@ -1,15 +1,14 @@
 {
   "expo": {
-    "name": "RevenueDot Starter",
-    "slug": "revenuedot-expo-starter",
-    "scheme": "revenuedot-starter",
+    "name": "Focus",
+    "slug": "revenuedot-paywall",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.example.revenuedotstarter"
+      "bundleIdentifier": "com.example.revenuedot.paywall"
     },
     "android": {
       "adaptiveIcon": {
@@ -19,13 +18,10 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.example.revenuedotstarter"
+      "package": "com.example.revenuedot.paywall"
     },
     "web": {
-      "bundler": "metro",
-      "output": "single",
       "favicon": "./assets/favicon.png"
-    },
-    "plugins": ["expo-router", "expo-status-bar"]
+    }
   }
 }

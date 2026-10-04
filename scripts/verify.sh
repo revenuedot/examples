@@ -41,6 +41,7 @@ if has node; then
   step "web/nextjs-purchases-js" web/nextjs-purchases-js bash -c "$NPM && npm run typecheck && npm run build >/dev/null"
   step "web/vanilla-js" web/vanilla-js bash -c "$NPM && npm run build >/dev/null"
   step "mobile/react-native-expo" mobile/react-native-expo bash -c "$NPM && npm run typecheck"
+  step "mobile/react-native-expo-focus" mobile/react-native-expo-focus bash -c "$NPM && npm run typecheck"
 else skip+=("node examples (no node)"); fi
 
 if has python3; then
