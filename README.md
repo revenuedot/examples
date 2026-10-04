@@ -31,7 +31,7 @@ RevenueDot implements the API the RevenueCat SDKs call, so an app points its SDK
 
 | Stack | Folder | Status |
 |---|---|---|
-| Self-host: Docker Compose + Postgres, seed script | [`selfhost/docker-compose`](selfhost/docker-compose) | Verified: built from GitHub, started, seeded, backed up, restored, rebuilt |
+| Self-host: Docker Compose + Postgres, seed script | [`selfhost/docker-compose`](selfhost/docker-compose) | Verified 2026-10-03: pulled `ghcr.io/revenuedot/revenuedot:latest`, started, seeded, `/v1/health` and the dashboard checked, torn down; build from source, backup and restore verified 2026-09-30 |
 | Migrate from RevenueCat: importer, catalog copy, notification forwarding, SDK diffs | [`migrate-from-revenuecat`](migrate-from-revenuecat) | Scripts verified between two RevenueDot projects; diffs checked against SDK sources |
 | Mobile: iOS SwiftUI | [`mobile/ios-swiftui`](mobile/ios-swiftui) | Builds for the simulator; ran end to end with the server's `cycle_count` value patched; the server fix has shipped, the example has not been re-run since |
 | Mobile: Android Jetpack Compose | [`mobile/android-compose`](mobile/android-compose) | Debug build with Gradle 8.14.5 and JDK 17; ran on a Pixel 7 API 35 emulator and completed a Test Store purchase against a local RevenueDot (`pro` entitlement active on the server), 2026-10-03 |

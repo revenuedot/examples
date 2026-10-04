@@ -4,13 +4,16 @@
 #
 #   cp .env.example .env && docker compose up -d      ->  http://localhost:8787
 #
-# There is no published image yet, so Compose builds it from the RevenueDot source.
-# REVENUEDOT_SOURCE can point at a local checkout instead of GitHub (useful when you change the server).
+# Compose pulls the published image (linux/amd64 and linux/arm64) when it is missing:
+# https://github.com/revenuedot/revenuedot/pkgs/container/revenuedot, tagged latest, by date (2026.10.03) and by commit.
+# Pin a tag with REVENUEDOT_IMAGE in .env for production. Upgrade with: docker compose pull && docker compose up -d
+# To build from source instead: docker compose build && docker compose up -d (REVENUEDOT_SOURCE can point at a local checkout).
 services:
   revenuedot:
+    image: ${REVENUEDOT_IMAGE:-ghcr.io/revenuedot/revenuedot:latest}
     build:
       context: ${REVENUEDOT_SOURCE:-https://github.com/revenuedot/revenuedot.git#main}
-    image: revenuedot:local
+    pull_policy: missing
     ports: ["${REVENUEDOT_PORT:-8787}:8787"]
     environment:
       # The server runs its database migrations on start, so upgrades need no extra step.
@@ -29,6 +32,34 @@ services:
       REVENUEDOT_MAIL_REPLY_TO: ${REVENUEDOT_MAIL_REPLY_TO:-}
       # Signs SDK responses when set in .env; empty leaves signing off. Generate it with scripts/signing-keygen.ts in revenuedot/revenuedot.
       REVENUEDOT_SIGNING_KEY: ${REVENUEDOT_SIGNING_KEY:-}
+      # Optional settings the monorepo's docker-compose.yml passes too; all off or default when unset.
+      # Web billing and custom domains: https://revenuedot.app/docs/guides/web-billing, https://revenuedot.app/docs/guides/custom-domains
+      REVENUEDOT_PAY_URL: ${REVENUEDOT_PAY_URL:-}
+      REVENUEDOT_CUSTOM_DOMAIN_TARGET: ${REVENUEDOT_CUSTOM_DOMAIN_TARGET:-}
+      # "Generate with AI" on paywalls and RevenueDot AI, the assistant: off without a key.
+      AI_GATEWAY_API_KEY: ${AI_GATEWAY_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-}
+      REVENUEDOT_PAYWALL_MODEL: ${REVENUEDOT_PAYWALL_MODEL:-}
+      REVENUEDOT_AI_MODEL: ${REVENUEDOT_AI_MODEL:-}
+      REVENUEDOT_AI_REASONING: ${REVENUEDOT_AI_REASONING:-}
+      REVENUEDOT_ASSISTANT_MODEL: ${REVENUEDOT_ASSISTANT_MODEL:-}
+      REVENUEDOT_ASSISTANT_CAPS: ${REVENUEDOT_ASSISTANT_CAPS:-}
+      # "on" writes and emails the weekly AI growth insights digest with the model key above.
+      REVENUEDOT_INSIGHTS_DIGEST: ${REVENUEDOT_INSIGHTS_DIGEST:-}
+      # Google OAuth client for "Connect AdMob"; unset lets each project enter its own.
+      REVENUEDOT_GOOGLE_OAUTH_CLIENT_ID: ${REVENUEDOT_GOOGLE_OAUTH_CLIENT_ID:-}
+      REVENUEDOT_GOOGLE_OAUTH_CLIENT_SECRET: ${REVENUEDOT_GOOGLE_OAUTH_CLIENT_SECRET:-}
+      # Full exports and moves: archives on the volume below, or an S3-compatible bucket.
+      REVENUEDOT_ARCHIVE_DIR: ${REVENUEDOT_ARCHIVE_DIR:-/data/archives}
+      REVENUEDOT_ARCHIVE_S3_BUCKET: ${REVENUEDOT_ARCHIVE_S3_BUCKET:-}
+      REVENUEDOT_ARCHIVE_S3_REGION: ${REVENUEDOT_ARCHIVE_S3_REGION:-}
+      REVENUEDOT_ARCHIVE_S3_ENDPOINT: ${REVENUEDOT_ARCHIVE_S3_ENDPOINT:-}
+      REVENUEDOT_ARCHIVE_S3_ACCESS_KEY_ID: ${REVENUEDOT_ARCHIVE_S3_ACCESS_KEY_ID:-}
+      REVENUEDOT_ARCHIVE_S3_SECRET_ACCESS_KEY: ${REVENUEDOT_ARCHIVE_S3_SECRET_ACCESS_KEY:-}
+      REVENUEDOT_ARCHIVE_S3_PREFIX: ${REVENUEDOT_ARCHIVE_S3_PREFIX:-}
+    volumes: [revenuedot-archives:/data/archives]
     depends_on:
       db: { condition: service_healthy }
     restart: unless-stopped
@@ -48,3 +79,4 @@ services:
     restart: unless-stopped
 volumes:
   revenuedot-data:
+  revenuedot-archives:
