@@ -1,57 +1,73 @@
-# Focus: Expo sample app with react-native-purchases and RevenueDot
+# Expo starter with in-app purchases on RevenueDot
 
 ## What this is
-**Focus**, the RevenueDot mobile sample app, in Expo (React Native), on RevenueCat's stock `react-native-purchases` SDK pointed at a RevenueDot server with `setProxyURL`. It is the same app as the [iOS reference](../ios-sandbox) and follows [`../DESIGN.md`](../DESIGN.md): a one-question-per-screen onboarding quiz (goal, focus span, obstacle, an insight, best time, daily minutes, where you heard of us, a reminders ask), "building your plan" with a counting percentage, a plan summary, then a two-page paywall: the value in the user's own words, then how the free trial works and the plan cards with annual pre-selected. Closing the paywall once offers the shorter plan. Home has today's ring, the week, sessions with Pro locks, an upgrade card and a session countdown; the account sheet has the plan, Restore, Manage subscription and a collapsed Developer section (app user id, entitlement, subscriptions, offering, server, load error, log in or out). Light and dark mode follow the system.
+A clean Expo Router app (Expo SDK 57) with subscriptions already working: a paywall screen that lists your offering, buying, **Restore purchases**, an entitlement gate (`<ProGate>`) around the paid part of the app, and a setup script for the built-in Test Store, so it runs without an App Store or Google Play account. It uses RevenueCat's `react-native-purchases` API through RevenueDot's fork, installed as an npm alias, so every RevenueCat tutorial still applies.
 
-**Status: typecheck verified; screens checked on the iOS simulator (development build) and the web.** On Expo SDK 57 with react-native-purchases 10.10, `npm run typecheck` passes. The earlier single-screen version of this example bought `$rc_monthly` through the Test Store on the web against [`selfhost/docker-compose`](../../selfhost/docker-compose); the redesigned app uses the same SDK calls. No Android build was made.
+**Status:** `npm run typecheck`, `expo-doctor` (21 of 21 checks) and `expo export` for iOS and web pass, and the project scaffolds with the one-line command below. The purchase flow itself has not been run in this starter; its SDK calls are the same ones the [Focus sample](../react-native-expo-focus) ran against a RevenueDot server (Test Store purchase on the web, entitlement turning active). No simulator run, no Android build.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so an app switches by setting one proxy URL.
+
+## Install
+One line, then answer the folder-name prompt:
+```bash
+npx create-expo-app --example https://github.com/revenuedot/examples/tree/main/mobile/react-native-expo
+```
+That downloads this folder and runs `npm install`. (`create-expo-app` reads the URL, so the same line works for a fork or a branch.)
 
 ## Run it
-You need a RevenueDot server with a Test Store app. The quickest is [`selfhost/docker-compose`](../../selfhost/docker-compose) and its `seed.sh`, which prints a `test_` key.
+You need a RevenueDot project with a Test Store app. Create a free account at https://app.revenuedot.app/signup, confirm your email, then in the new project folder:
 
 ```bash
-cd mobile/react-native-expo
-npm install
-cp .env.example .env.local      # EXPO_PUBLIC_REVENUEDOT_URL and EXPO_PUBLIC_REVENUEDOT_API_KEY=test_...
-npx expo start                  # press i (iOS simulator), a (Android emulator) or w (web), or scan with Expo Go
+RD_EMAIL=you@example.com RD_PASSWORD='your password' npm run setup:test-store   # creates the Test Store app, "pro" entitlement and "default" offering, writes .env.local
+npx expo start                                                                   # press i (iOS simulator), a (Android emulator) or w (web), or scan the QR code with Expo Go
 ```
 
-The server URL must be reachable from the device:
+Tap **Unlock Pro**, pick a plan, **Continue**, then **Test valid purchase** in the SDK's dialog. The Pro card on the home screen unlocks, and the purchase appears under Customers in the dashboard. Close and reopen the app, or tap **Restore purchases**, and Pro stays on.
 
-| Where the app runs | `EXPO_PUBLIC_REVENUEDOT_URL` |
-|---|---|
-| iOS simulator, web | `http://localhost:8787` |
-| Android emulator | `http://10.0.2.2:8787` |
-| A phone on your Wi-Fi | `http://<your computer's LAN IP>:8787` |
+Running your own server instead: start [`selfhost/docker-compose`](../../selfhost/docker-compose), then `RD_URL=http://localhost:8787 npm run setup:test-store`. Where the app runs decides the URL (`http://localhost:8787` for the iOS simulator and web, `http://10.0.2.2:8787` for an Android emulator, your computer's LAN address for a phone). iOS blocks plain `http://` to anything but `localhost`, so a phone needs an `https://` URL.
 
-In **Expo Go and on the web**, react-native-purchases runs in its browser mode and only accepts `test_` (Test Store) and `rcb_` keys. Go through onboarding, pick a plan on the paywall, then tap **Test valid purchase** in the dialog.
+In **Expo Go and on the web**, the SDK runs in browser mode and only accepts `test_` keys. For real App Store or Google Play purchases, make a development build (`npx expo run:ios` or `npx expo run:android`), connect the stores to RevenueDot ([App Store](https://revenuedot.app/docs/guides/app-store), [Google Play](https://revenuedot.app/docs/guides/google-play)) and set `EXPO_PUBLIC_REVENUEDOT_IOS_KEY` or `EXPO_PUBLIC_REVENUEDOT_ANDROID_KEY`.
 
-For real App Store or Google Play purchases, make a development build (`npx expo run:ios` / `npx expo run:android`, or EAS Build), connect the stores to RevenueDot ([App Store](https://revenuedot.app/docs/guides/app-store), [Google Play](https://revenuedot.app/docs/guides/google-play)) and set `EXPO_PUBLIC_REVENUEDOT_IOS_KEY` / `EXPO_PUBLIC_REVENUEDOT_ANDROID_KEY`. iOS blocks plain `http://` to anything but `localhost` unless you add an App Transport Security exception, so use an `https://` URL for a phone.
+## What to change
+1. **Names:** `name`, `slug`, `scheme`, `ios.bundleIdentifier` and `android.package` in `app.json`.
+2. **Entitlement:** `EXPO_PUBLIC_REVENUEDOT_ENTITLEMENT` in `.env.local` (default `pro`). It must match the lookup key of an entitlement in your project.
+3. **The paid part:** replace the "Pro unlocked" card in `app/index.tsx`. Anything inside `<ProGate>` renders only while the entitlement is active.
+4. **Products and prices:** edit them in the dashboard (Product catalog), not in code. The paywall renders whatever the current offering holds.
+5. **Paywall look and legal links:** `app/paywall.tsx`. Apple requires Terms of Use and Privacy Policy links on every paywall.
+6. **Users:** after sign-in, call `Purchases.logIn(yourUserId)` so purchases follow the account across devices.
+
+## Use with your coding agent
+The folder ships an [`AGENTS.md`](AGENTS.md) that Claude Code, Codex, Cursor and similar agents read automatically. Open the new project in your agent and ask, for example:
+
+- "Add a monthly and yearly plan toggle to the paywall."
+- "Gate the new Reports screen behind the pro entitlement."
+- "Sign users in with Supabase and call Purchases.logIn with their id."
+
+Agents can read RevenueDot's docs at https://revenuedot.app/llms.txt, and the [RevenueDot MCP server](https://mcp.revenuedot.app) manages products and entitlements for them. They should keep `import Purchases from "react-native-purchases"` and the order in `lib/revenuedot.ts` (`setProxyURL`, then `configure`).
 
 ## How it works
-- **`revenuedot.ts`** awaits `Purchases.setProxyURL(serverURL)` and then calls `Purchases.configure({ apiKey })`. The proxy URL must be set before `configure`, and the native SDKs ignore any path in it (`https://example.com/api` is used as `https://example.com`), so serve RevenueDot at the root of its host. See [React Native SDK](https://revenuedot.app/docs/sdks/react-native).
-- **Response signatures:** react-native-purchases defaults `entitlementVerificationMode` to disabled, which is what RevenueDot needs today: RevenueDot does not sign responses with RevenueCat's key.
-- **`model.tsx`** calls `getOfferings()` and `getCustomerInfo()` once configured, runs `purchasePackage(pkg)`, `restorePurchases()`, `logIn(id)` and `logOut()`, and listens with `addCustomerInfoUpdateListener`. Pro means `customerInfo.entitlements.active["pro"]`. A cancelled purchase (`PURCHASES_ERROR_CODE.PURCHASE_CANCELLED_ERROR`) shows nothing. Load errors appear only in Account > Developer, never on the paywall.
-- **`plans.ts`** builds the plan cards from `offerings.current`: annual first and pre-selected, the billed price (`$59.99/year`) largest, the per-week price under it, a "Save N%" badge against the shortest plan, and the trial length from a zero-price `introPrice`. With no offering yet, the paywall shows preview plans (Yearly $59.99 with a 7-day trial, Weekly $4.99) and buying is off.
-- **Onboarding answers** are saved with `Purchases.setAttributes({ onboarding_goal: ..., ... })`, so RevenueDot audiences and experiments can target them ([targeting and experiments](https://revenuedot.app/docs/guides/targeting-and-experiments)).
-- **Reminders:** the reminders step explains the nudge but doesn't show the system prompt. To schedule real reminders, add `expo-notifications` and call `requestPermissionsAsync()` in `onboarding/steps.tsx`; it is left out because its config plugin adds the push entitlement, which a free Apple developer account can't sign.
-- **Files:** `theme.ts` (tokens, light and dark), `ui/` (buttons, option rows, ring, sheet), `onboarding/`, `paywall/`, `home/`, `settings/`. Device-only state (onboarding done, answers, minutes per day) lives in AsyncStorage; subscription state always comes from RevenueDot.
-- **Screens for screenshots and UI tests:** in development, `EXPO_PUBLIC_RD_SCREEN=<welcome|goal|insight|reminders|building|plan|paywall|plans|home|settings> npx expo start --clear` opens that screen with sample answers (Deep work, My phone, Morning, 1 hour).
-- **What the server sees:** `GET /v1/subscribers/{id}/offerings`, `GET /v1/subscribers/{id}`, `POST /v1/subscribers/{id}/attributes`, `GET /rcbilling/v1/subscribers/{id}/products` (Test Store product details) and `POST /v1/receipts`. See [SDK endpoints](https://revenuedot.app/docs/api/sdk-endpoints).
-- **Analytics:** in browser mode (web and Expo Go) the SDK also sends analytics events to RevenueCat's events host (`e.revenue.cat`), which the proxy URL does not cover. Native builds send their events through the proxy URL on iOS; on Android, diagnostics and paywall events still go to RevenueCat's hosts.
-- **Test Store prices show $0.00** because RevenueDot's catalog does not store Test Store prices yet, so the savings badge is hidden for them.
+- **`lib/revenuedot.ts`** awaits `Purchases.setProxyURL(serverURL)` and then calls `Purchases.configure({ apiKey })`. The proxy URL must be set before `configure`, and the native SDKs ignore any path in it, so serve RevenueDot at the root of its host. See [React Native SDK](https://revenuedot.app/docs/sdks/react-native).
+- **`lib/purchases.tsx`** calls `getCustomerInfo()` and `getOfferings()` once configured, runs `purchasePackage(pkg)` and `restorePurchases()`, and listens with `addCustomerInfoUpdateListener`, so the gate updates after every purchase, restore and renewal. A cancelled purchase (`userCancelled`) shows nothing.
+- **`lib/ProGate.tsx`** is the gate: `customerInfo.entitlements.active["pro"]` decides which side renders.
+- **`app/paywall.tsx`** lists `offerings.current.availablePackages` with the store's own price strings, so prices and currencies are always right.
+- **`scripts/setup-test-store.sh`** runs the shared [seed script](../../selfhost/docker-compose/seed.sh): a Test Store app, three products, the `pro` entitlement and the `default` offering. It is safe to run twice.
+- **Response signatures:** `react-native-purchases` defaults `entitlementVerificationMode` to disabled, which a self-hosted RevenueDot needs. Leave it unset.
+- **Analytics:** in browser mode (web and Expo Go) the SDK also sends analytics events to RevenueCat's events host, which the proxy URL does not cover.
 
 ## Migrate from RevenueCat
+```diff
+-"react-native-purchases": "^10.10.2",
++"react-native-purchases": "npm:@revenuedot/react-native-purchases@10.10.2",
+```
 ```diff
  import Purchases from "react-native-purchases";
 
 +// Point the SDK at your RevenueDot server; nothing else in the app changes.
-+await Purchases.setProxyURL("https://revenuedot.example.com");
++await Purchases.setProxyURL("https://api.revenuedot.app");
  Purchases.configure({ apiKey: Platform.OS === "ios" ? "appl_..." : "goog_..." });
 ```
-If you set `entitlementVerificationMode` to `INFORMATIONAL`, set it back to `DISABLED`. Keep your existing keys by importing your RevenueCat project, or use the keys RevenueDot shows for each app. The full plan: [Migrate from RevenueCat](https://revenuedot.app/docs/migrate).
+If you set `entitlementVerificationMode` to `INFORMATIONAL`, remove it. The full plan: [Migrate from RevenueCat](https://revenuedot.app/docs/migrate).
 
 ## Docs
 - [React Native SDK guide](https://revenuedot.app/docs/sdks/react-native)
@@ -59,7 +75,8 @@ If you set `entitlementVerificationMode` to `INFORMATIONAL`, set it back to `DIS
 - [Test Store](https://revenuedot.app/docs/guides/test-store), [Sandbox testing](https://revenuedot.app/docs/guides/sandbox-testing)
 
 ## Related examples
+- [`mobile/react-native-expo-focus`](../react-native-expo-focus): a full sample app with onboarding, a two-page paywall and a developer panel.
 - [`selfhost/docker-compose`](../../selfhost/docker-compose): the server this app talks to.
-- [`web/purchases-js-vite`](../../web/purchases-js-vite): the same paywall with purchases-js.
+- [`web/purchases-js-vite`](../../web/purchases-js-vite): the same paywall on the web.
 - [`mobile/ios-swiftui`](../ios-swiftui), [`mobile/android-compose`](../android-compose), [`mobile/flutter`](../flutter): native versions.
-- [`migrate-from-revenuecat`](../../migrate-from-revenuecat): before/after diffs for every SDK.
+- [`migrate-from-revenuecat`](../../migrate-from-revenuecat): before and after diffs for every SDK.
