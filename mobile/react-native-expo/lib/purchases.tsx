@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: loads offerings and customer info, and exposes purchase, restore and the entitlement check to every screen.
 // Docs: https://revenuedot.app/docs/sdks/react-native   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";

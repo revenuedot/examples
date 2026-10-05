@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the screen after checkout. It confirms Pro, says what happens next, and hands off to the app with the
 // app user id in the link, so the app can logIn as the same customer. A collapsed Developer section shows what
 // RevenueDot sees. Docs: https://revenuedot.app/docs/concepts/customers-and-app-user-ids

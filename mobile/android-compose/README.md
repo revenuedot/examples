@@ -10,7 +10,7 @@ For the full app with the onboarding quiz in front of the paywall, see [`android
 **Status: verified end to end on 2026-10-03.** `./gradlew :app:assembleDebug` passes with Gradle 8.14.5, AGP 8.13.2, JDK 17 and Android SDK 36. The debug build ran on a Pixel 7 emulator (API 35, arm64) against a local RevenueDot (PGlite, seeded with `selfhost/docker-compose/seed.sh`) reached as `http://10.0.2.2:8787`: the SDK loaded the offering with its 3 products, **See plans**, **Continue**, **Continue** on the pre-selected yearly plan and **Test valid purchase** in the Test Store dialog posted `POST /v1/receipts` (200), the home screen switched to **Focus Pro** with "Renews Oct 3, 2027", **Restore purchases** answered "Restore: done.", and the server recorded the customer, the `pro_annual` transaction and an active `pro` entitlement. Real Google Play purchases are not covered here; see [`android-sandbox`](../android-sandbox).
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
 
 ## Run it
 You need Android Studio (JDK 17) and a RevenueDot server with a Test Store app. The quickest server is [`selfhost/docker-compose`](../../selfhost/docker-compose) with its `seed.sh`.

@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: end-to-end tests against a RevenueDot server: the plans page, buying with the Test Store dialog,
 // the entitlement on the server and on the success screen, log in, cancelling, and preview plans.
 // Docs: https://revenuedot.app/docs/sdks/web   Migrate from RevenueCat: https://revenuedot.app/docs/migrate

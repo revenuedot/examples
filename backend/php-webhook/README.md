@@ -6,7 +6,7 @@ A plain PHP 8 endpoint (no framework, no Composer) at `POST /webhooks/revenuedot
 **Status: verified.** `php tests/run.php` (9 checks: signature verification plus the handler answering 200, deduping a retry and refusing bad signatures and authorization, with a real signed delivery captured from a RevenueDot server) passes on PHP 8.5.11. Also tested live on 2026-10-03 with [`scripts/e2e-webhook.sh`](../../scripts/e2e-webhook.sh): a local RevenueDot signed and delivered a Test Store `INITIAL_PURCHASE` to `php -S localhost:3000 -t public public/index.php` and recorded `delivered`, HTTP 200.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
 
 ## Run it
 You need PHP 8.1 or newer.

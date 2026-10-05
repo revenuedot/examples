@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the account view. The plan card reads the pro entitlement; "Manage subscription" opens the SDK's managementURL;
 // signing in with identifyUser is how a web customer gets their purchases back (purchases-js has no restore call).
 // A collapsed Developer section shows what RevenueDot sees. Docs: https://revenuedot.app/docs/concepts/customers-and-app-user-ids

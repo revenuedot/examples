@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: end-to-end tests of the funnel against a RevenueDot server: the quiz (also by keyboard), answers saved as
 // attributes, the paywall, buying with the Test Store dialog, the entitlement on the server, log in, and the exit offer.
 // Docs: https://revenuedot.app/docs/sdks/web   Migrate from RevenueCat: https://revenuedot.app/docs/migrate

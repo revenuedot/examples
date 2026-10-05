@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the onboarding quiz content and step order. Each question id becomes a customer attribute
 // `onboarding_<id>` in RevenueDot, so audiences and experiments can target the answers.
 // Docs: https://revenuedot.app/docs/guides/targeting-and-experiments

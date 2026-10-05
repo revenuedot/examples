@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: opt-in test against a running RevenueDot; runs only when REVENUEDOT_URL and REVENUEDOT_SECRET_KEY are set.
 // Docs: https://revenuedot.app/docs/api/rest-v1   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import { test } from "node:test";

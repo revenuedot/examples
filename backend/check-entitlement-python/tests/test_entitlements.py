@@ -1,4 +1,4 @@
-# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 # This file: tests has_entitlement and GET /api/pro-content against a local fake of GET /v1/subscribers.
 # Docs: https://revenuedot.app/docs/api/rest-v1   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import copy

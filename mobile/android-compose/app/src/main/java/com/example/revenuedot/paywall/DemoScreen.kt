@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: debug builds only. The intent extra `RDScreen` opens one screen, for screenshots and UI tests: paywall,
 // plans, home, settings (home with the Developer section open). Other names from DESIGN.md open home.
 // Docs: https://revenuedot.app/docs/sdks/android   Try: adb shell am start -S -n com.example.revenuedot.paywall/.MainActivity --es RDScreen plans

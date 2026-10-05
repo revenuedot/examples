@@ -8,7 +8,7 @@ It uses the same design as the native Focus apps ([`mobile/DESIGN.md`](../../mob
 **Status: verified.** `npm run build` (which runs `tsc --noEmit` first) passes, and `npm run e2e` (Playwright, Chromium) passes 3 tests against a RevenueDot server seeded with [`selfhost/docker-compose/seed.sh`](../../selfhost/docker-compose), using purchases-js 1.67.1: it picks `$rc_monthly` with the arrow keys, buys it through the Test Store dialog, confirms `pro` on the server itself and on the page, logs in and keeps `pro`; checks that cancelling leaves `pro` inactive on the server; and checks the preview plans.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
 
 ## Run it
 You need a RevenueDot server with a Test Store app. The quickest is [`selfhost/docker-compose`](../../selfhost/docker-compose) and its `seed.sh`, which prints a `test_` key.

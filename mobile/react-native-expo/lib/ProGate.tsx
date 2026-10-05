@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the entitlement gate. Wrap anything paid in <ProGate>; free users see the locked card instead.
 // Docs: https://revenuedot.app/docs/concepts/entitlements   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import { useRouter } from "expo-router";

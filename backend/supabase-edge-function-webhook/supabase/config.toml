@@ -1,4 +1,4 @@
-# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 # This file: Supabase project config; only the webhook function's settings differ from `supabase init` defaults.
 # Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 project_id = "revenuedot-webhook-example"

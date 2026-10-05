@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 # This file: builds, type-checks or tests every example whose toolchain is installed; skips the rest with a note.
 # Docs: https://revenuedot.app/docs   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 set -uo pipefail

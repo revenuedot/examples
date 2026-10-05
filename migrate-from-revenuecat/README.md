@@ -12,7 +12,7 @@ The importer, tools and diffs for moving an app that uses the RevenueCat SDK ont
 **For a real migration, use the importer: `npx revenuedot import`.** It copies a whole RevenueCat project into RevenueDot: apps, SDK keys, products, entitlements, offerings, packages, customers, aliases, attributes, subscriptions and one-time purchases. It fires no webhooks, resumes where it stopped, and changes nothing on a second run. `npx revenuedot import verify` compares every customer between the two, and `npx revenuedot import plan` prints the cutover steps with your own app ids and URLs. Its source and full guide are in [`packages/importer`](https://github.com/revenuedot/revenuedot/tree/main/packages/importer). The `revenuedot` package is not on npm yet (checked 2026-09-30); until it is, run it from a checkout of the server repo with `pnpm --filter revenuedot cli import ...`. `copy-catalog.mjs` below copies only the catalog, for when you want nothing else.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
 
 ## Run it
 You need a RevenueDot server ([`selfhost/docker-compose`](../selfhost/docker-compose)), a RevenueDot secret key (`sk_...`, from `seed.sh` or the dashboard's API keys page) and a RevenueCat API v2 secret key with read access to your project.

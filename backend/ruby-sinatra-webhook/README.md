@@ -6,7 +6,7 @@ A Sinatra 4 app with `POST /webhooks/revenuedot` that verifies the HMAC signatur
 **Status: verified.** `bundle exec ruby test/webhook_test.rb` (2 tests with a real signed delivery captured from a RevenueDot server, the HTTP part through `rack-test`) passes on Ruby 4.0.1 with Sinatra 4.2.1, Rack 3.2.7 and Puma 7.2.1. Also tested live on 2026-09-30 with [`scripts/e2e-webhook.sh`](../../scripts/e2e-webhook.sh): a local RevenueDot signed and delivered a Test Store `INITIAL_PURCHASE` to `bundle exec rackup` and recorded `delivered`, HTTP 200.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
 
 ## Run it
 ```bash

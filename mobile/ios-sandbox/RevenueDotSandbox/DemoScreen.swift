@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: debug builds only. `-RDScreen <name>` opens one screen with sample answers, for screenshots and UI tests:
 // welcome, goal, insight, reminders, building, plan, paywall, plans, home, settings.
 import Foundation

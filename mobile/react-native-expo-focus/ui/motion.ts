@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: small animation hooks on the built-in Animated API and requestAnimationFrame, so the sample needs no
 // animation library. Both work the same on iOS, Android and the web.
 // Docs: https://revenuedot.app/docs/sdks/react-native

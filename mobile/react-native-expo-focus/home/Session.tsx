@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the sessions and a running one: a big countdown inside the ring. "Finish session" credits the minutes
 // right away so the sample is quick to try. The first finished session asks for a rating, never onboarding.
 // Docs: https://revenuedot.app/docs/sdks/react-native

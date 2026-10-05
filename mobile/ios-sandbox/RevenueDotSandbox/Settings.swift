@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: account and settings. The plan card reads the `pro` entitlement; Restore and Manage subscription are
 // required on iOS. The developer section shows what RevenueDot sees: app user id, entitlement, subscriptions.
 // Docs: https://revenuedot.app/docs/sdks/ios

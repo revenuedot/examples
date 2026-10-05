@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the Focus onboarding quiz, the same questions and copy as the mobile sample apps (examples/mobile/DESIGN.md).
 // Each answer is saved as the customer attribute onboarding_<question id>, so audiences and experiments can use it.
 // Docs: https://revenuedot.app/docs/guides/targeting-and-experiments

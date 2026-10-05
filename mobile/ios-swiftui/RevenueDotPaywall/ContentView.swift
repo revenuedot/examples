@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: a stand-in for your app's own screen: it shows whether Pro is active, opens the paywall, and has the
 // account actions every subscription app needs (restore, manage, log in).
 // Docs: https://revenuedot.app/docs/sdks/ios

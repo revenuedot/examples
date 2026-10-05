@@ -1,4 +1,4 @@
-# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 # XcodeGen spec for the App Store sandbox app: `xcodegen generate` writes RevenueDotSandbox.xcodeproj.
 # Docs: https://revenuedot.app/docs/sdks/ios   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 name: RevenueDotSandbox

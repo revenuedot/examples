@@ -6,7 +6,7 @@ A Cloudflare Worker (module syntax, no framework) that answers `POST /webhooks/r
 **Status: verified.** `npm test` (Vitest, with a real signed delivery captured from a RevenueDot server) and `npm run typecheck` pass on Node 22.14 with Wrangler 4.145. Also tested live: a local RevenueDot delivered an `INITIAL_PURCHASE` to `wrangler dev` and recorded `delivered`, HTTP 200. It has not been deployed to Cloudflare.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
 
 ## Run it
 ```bash

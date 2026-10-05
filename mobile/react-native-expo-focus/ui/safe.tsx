@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: a full-screen container that keeps content clear of the notch and the home indicator.
 // Docs: https://revenuedot.app/docs/sdks/react-native
 import type { ReactNode } from "react";

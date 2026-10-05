@@ -6,7 +6,7 @@ A Firebase Functions v2 HTTPS function, `revenuedotWebhook`, that verifies the H
 **Status: verified.** `node --test` (2 tests with a real signed delivery captured from a RevenueDot server and a fake req/res) passes on Node.js 22.14, and `src/index.js` loads and answers through `onRequest` with firebase-functions 6.6.0 and firebase-admin 13.10.0. Not deployed to Firebase from here.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
 
 ## Run it
 ```bash

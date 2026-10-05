@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the Focus design tokens. Ink on white (inverted in dark mode), one gold accent, hairlines, light haptics.
 // Docs: https://revenuedot.app/docs/sdks/react-native   Design notes: ../DESIGN.md
 import { Platform, useColorScheme } from "react-native";

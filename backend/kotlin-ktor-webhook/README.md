@@ -6,7 +6,7 @@ A Ktor 3 server (Netty, Kotlin 2.2, JDK 21) with `POST /webhooks/revenuedot` tha
 **Status: verified.** `mvn test` (2 tests through Ktor's `testApplication`, with a real signed delivery captured from a RevenueDot server) passes on JDK 21.0.12 with Maven 3.9.16, Kotlin 2.2.20 and Ktor 3.3.0. Also tested live on 2026-10-03 with [`scripts/e2e-webhook.sh`](../../scripts/e2e-webhook.sh): a local RevenueDot signed and delivered a Test Store `INITIAL_PURCHASE` to `mvn compile exec:java` and recorded `delivered`, HTTP 200.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
 
 ## Run it
 You need JDK 21 and Maven.

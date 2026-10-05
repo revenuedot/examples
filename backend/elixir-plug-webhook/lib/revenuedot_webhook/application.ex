@@ -1,4 +1,4 @@
-# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 # This file: starts the event-id store and, outside tests, the Bandit HTTP server on PORT (default 3000).
 # Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 defmodule RevenuedotWebhook.Application do

@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the two screens between the quiz and the paywall: "building your plan" (a percentage counting to 100
 // while three checks tick in) and the plan summary in the user's own words.
 // Docs: https://revenuedot.app/docs/guides/paywalls

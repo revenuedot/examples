@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: walks the whole Focus flow on an iPhone-sized screen without the SDK (preview plans): onboarding quiz,
 // building the plan, the two paywall pages, the exit offer, home and the account sheet. Overflows fail the test.
 // Docs: https://revenuedot.app/docs/sdks/flutter

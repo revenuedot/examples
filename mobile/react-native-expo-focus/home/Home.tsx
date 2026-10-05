@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: home. Today's ring, the week and the sessions; Deep and Flow open the paywall until the `pro`
 // entitlement is active. The account sheet and a running session open from here.
 // Docs: https://revenuedot.app/docs/sdks/react-native

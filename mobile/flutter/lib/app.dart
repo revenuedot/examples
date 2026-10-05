@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the app's flow. First launch: onboarding, then the paywall, then home. Later launches open home.
 // Light and dark follow the system.
 // Docs: https://revenuedot.app/docs/sdks/flutter

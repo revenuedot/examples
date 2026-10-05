@@ -1,4 +1,4 @@
-<!-- RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+<!-- RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
      This file: logs at INFO so the handler's lines are not buried under Netty's DEBUG output.
      Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate -->
 <configuration>

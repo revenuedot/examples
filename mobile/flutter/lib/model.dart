@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: loads offerings and customer info, saves onboarding answers as attributes, and runs purchase,
 // restore and logIn/logOut. Screens listen to it; the SDK's customer-info listener keeps it current.
 // Docs: https://revenuedot.app/docs/sdks/flutter   Migrate from RevenueCat: https://revenuedot.app/docs/migrate

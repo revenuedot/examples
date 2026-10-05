@@ -11,7 +11,7 @@ It matches the iOS reference app screen for screen; the design rules for every m
 **Status: verified end to end on 2026-10-03.** `flutter pub get`, `flutter analyze` (no issues) and `flutter test` (walks onboarding, paywall, exit offer, home and account) pass on Flutter 3.47.5 with purchases_flutter 10.13. `flutter create --platforms=ios,android .` then `flutter build ios --simulator --debug` with `--dart-define=REVENUEDOT_URL=http://localhost:8787` and the Test Store key built the app, and it ran on the iPhone 17 Pro simulator (iOS 26.2) against a local RevenueDot (PGlite, seeded with `selfhost/docker-compose/seed.sh`): the whole quiz, the two-page paywall with the real offering (yearly $59.99, monthly $9.99, lifetime $149.99), **Continue** on the pre-selected yearly plan and **Test valid purchase** in the Test Store dialog, after which home showed the **Pro** badge, the account sheet showed **Focus Pro** with "Renews Oct 3, 2027", and the server recorded the customer with a `pro_annual` Test Store subscription and an active `pro` entitlement. Android (emulator) and real App Store or Google Play purchases have not been run from this app.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
 
 ## Run it
 You need Flutter 3.27 or later and a RevenueDot server with a Test Store app. The quickest server is [`selfhost/docker-compose`](../../selfhost/docker-compose) with its `seed.sh`.

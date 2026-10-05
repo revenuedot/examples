@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the onboarding quiz before the paywall, in the shape that converts best in 2026: one question per
 // screen with a progress bar, a "building your plan" moment, then a plan summary. The answers are saved as
 // RevenueDot customer attributes, so audiences, targeting rules and experiments can use them.

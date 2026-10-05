@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the Focus design system. Ink on white (inverted in dark mode), one gold accent, hairlines instead of
 // shadows, large system type, capsule buttons and light haptics. Tokens match ../DESIGN.md.
 // Docs: https://revenuedot.app/docs/sdks/flutter   Design notes: ../DESIGN.md

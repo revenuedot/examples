@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the two-page paywall built from the current offering, with the disclosure and links Apple requires.
 // Closing it with the annual plan selected offers the shortest plan once; the second close leaves.
 // Docs: https://revenuedot.app/docs/guides/paywalls

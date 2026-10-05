@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 # This file: turns on notification forwarding for one app and prints the URL to paste into App Store Connect or Pub/Sub.
 # Docs: https://revenuedot.app/docs/migrate   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 #

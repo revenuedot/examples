@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the values the Focus sample needs besides the SDK keys: the entitlement, the paywall's legal links
 // and the one optional App Store review.
 // Docs: https://revenuedot.app/docs/guides/paywalls
