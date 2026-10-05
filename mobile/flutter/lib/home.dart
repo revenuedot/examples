@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: home and the running session. Today's ring, the week, and sessions; the Pro ones open the paywall
 // until the `pro` entitlement is active. The rating request comes after a finished session, never in onboarding.
 // Docs: https://revenuedot.app/docs/sdks/flutter

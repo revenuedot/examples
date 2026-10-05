@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the drop-in paywall, built from the current offering with the 2026 patterns that convert best:
 // page 1 sells the value; page 2 shows how the free trial works, the plans with annual pre-selected, and the
 // renewal disclosure. Closing it offers the shorter plan once before leaving.

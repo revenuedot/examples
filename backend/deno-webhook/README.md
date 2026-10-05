@@ -6,7 +6,7 @@ A Deno server (`Deno.serve`, no dependencies) with `POST /webhooks/revenuedot` t
 **Status: verified.** `deno test` (with a real signed delivery captured from a RevenueDot server) and `deno check main.ts` pass on Deno 2.2.6. Also tested live: a local RevenueDot delivered an `INITIAL_PURCHASE` to `deno run --allow-net --allow-env main.ts` and recorded `delivered`, HTTP 200.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
 
 ## Run it
 ```bash

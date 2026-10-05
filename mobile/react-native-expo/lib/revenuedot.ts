@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: points react-native-purchases at your RevenueDot server and configures it once.
 // Docs: https://revenuedot.app/docs/sdks/react-native   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import { Platform } from "react-native";

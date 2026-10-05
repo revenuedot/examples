@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: Firebase Functions v2 HTTPS function `revenuedotWebhook` that wires secrets into the webhook handler.
 // Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import { onRequest } from "firebase-functions/v2/https";

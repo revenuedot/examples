@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the small building blocks every Focus screen shares: icons, the brand mark, the progress ring and bar,
 // option rows (real radio inputs, so arrow keys and screen readers work) and the primary button.
 // Docs: https://revenuedot.app/docs/sdks/web

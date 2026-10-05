@@ -6,7 +6,7 @@
 **Status: typecheck verified; screens checked on the iOS simulator (development build) and the web.** On Expo SDK 57 with react-native-purchases 10.10, `npm run typecheck` passes. The earlier single-screen version of this example bought `$rc_monthly` through the Test Store on the web against [`selfhost/docker-compose`](../../selfhost/docker-compose); the redesigned app uses the same SDK calls. No Android build was made.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
 
 ## Run it
 You need a RevenueDot server with a Test Store app. The quickest is [`selfhost/docker-compose`](../../selfhost/docker-compose) and its `seed.sh`, which prints a `test_` key.

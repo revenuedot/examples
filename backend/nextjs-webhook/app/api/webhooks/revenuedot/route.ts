@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: POST /api/webhooks/revenuedot, the Next.js route handler that receives RevenueDot webhooks.
 // Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import { SIGNATURE_HEADER, authorizationMatches, firstDelivery, verifySignature, type WebhookPayload } from "@/lib/revenuedot-webhook";

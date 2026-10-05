@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the home screen. Free content, a Pro-gated card, restore purchases and the connection details.
 // Docs: https://revenuedot.app/docs/concepts/entitlements   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import { useState } from "react";

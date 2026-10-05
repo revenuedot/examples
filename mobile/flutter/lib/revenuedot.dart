@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: points purchases_flutter at your RevenueDot server and configures it once.
 // Docs: https://revenuedot.app/docs/sdks/flutter   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import 'dart:io' show Platform;

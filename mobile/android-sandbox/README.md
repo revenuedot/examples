@@ -11,7 +11,7 @@
 It ships through the Google Play internal testing track, because Play Billing only sells to apps installed from Play. Light and dark mode both follow the system.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
 
 ## Run it
 You need JDK 17 and the Android SDK (platform 36, build-tools 35.0.0). If platform 36 is missing, install it with `sdkmanager "platforms;android-36"`. The Gradle wrapper (8.14.5) is included.

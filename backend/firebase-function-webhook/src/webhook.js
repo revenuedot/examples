@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: Express-style (req, res) handler that verifies, dedupes and handles RevenueDot events; no Firebase imports, so tests run without the SDK.
 // Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import { timingSafeEqual } from "node:crypto";

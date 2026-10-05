@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: a framework-free paywall: the plans page built from the current offering (annual pre-selected, billed price
 // largest, trial timeline), checkout with purchases-js, then the success screen with the entitlement.
 // Docs: https://revenuedot.app/docs/sdks/web   Migrate from RevenueCat: https://revenuedot.app/docs/migrate

@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the two-page paywall built from the current offering. Page 1 sells the value in the user's own words;
 // page 2 explains the free trial step by step, shows the plans with annual pre-selected, and the disclosure line.
 // Page 1 reads the visitor's answers from the link (?goal=Study&daily_minutes=30) when a quiz elsewhere sent them.

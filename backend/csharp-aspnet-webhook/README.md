@@ -6,7 +6,7 @@ An ASP.NET Core minimal API (.NET 9) with `POST /webhooks/revenuedot` that verif
 **Status: verified.** `dotnet test tests/Webhook.Tests` (2 xunit tests through `WebApplicationFactory`, with a real signed delivery captured from a RevenueDot server) passes on the .NET SDK 9.0.318 (installed with Microsoft's `dotnet-install.sh` into `~/.dotnet`; `brew install --cask dotnet-sdk` gives .NET 10, which also builds `net9.0` projects). Also tested live on 2026-10-03 with [`scripts/e2e-webhook.sh`](../../scripts/e2e-webhook.sh): a local RevenueDot signed and delivered a Test Store `INITIAL_PURCHASE` to `dotnet run --project src/Webhook` and recorded `delivered`, HTTP 200.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
 
 ## Run it
 ```bash

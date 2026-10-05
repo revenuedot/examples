@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: copies a project's catalog (apps, products, entitlements, offerings, packages) between two REST API v2 servers.
 // Docs: https://revenuedot.app/docs/migrate   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 //

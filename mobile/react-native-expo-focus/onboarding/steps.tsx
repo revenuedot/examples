@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the quiz screens: welcome, one question per screen, the "a plan beats willpower" insight and the
 // reminders ask. Each has a big title, a short subtitle and one pinned button.
 // Docs: https://revenuedot.app/docs/guides/targeting-and-experiments

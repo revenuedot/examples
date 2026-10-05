@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the sample apps' design system in SwiftUI. Monochrome ink on white (inverted in dark mode), one gold
 // accent for "selected" and "live", hairline borders instead of shadows, large type, pill buttons, light haptics.
 // Docs: https://revenuedot.app/docs/sdks/ios   Design notes: ../../DESIGN.md

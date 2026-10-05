@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: turns the current offering's packages into paywall plans: billed price, price per week, savings badge
 // and free-trial length. With no offering yet (a fresh project) it supplies preview plans; buying them is disabled.
 // Docs: https://revenuedot.app/docs/guides/paywalls

@@ -1,4 +1,4 @@
-# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 # This file: WSGI entry point for production servers such as gunicorn.
 # Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 import os

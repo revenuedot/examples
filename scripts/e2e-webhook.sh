@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+# RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 # This file: live end-to-end check for a webhook backend: a real RevenueDot signs and delivers INITIAL_PURCHASE to it.
 # Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
 #

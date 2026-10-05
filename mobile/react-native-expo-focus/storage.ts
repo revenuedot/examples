@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: what Focus keeps on the device: whether onboarding is done, the answers, minutes focused per day and
 // how many sessions were finished. Subscription state is never stored here; it always comes from RevenueDot.
 // Docs: https://revenuedot.app/docs/sdks/react-native

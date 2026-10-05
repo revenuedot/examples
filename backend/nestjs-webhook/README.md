@@ -6,7 +6,7 @@ A NestJS 12 app with a controller for `POST /webhooks/revenuedot` that verifies 
 **Status: verified.** `npm test` (TypeScript build plus Node's built-in test runner against the Nest app, with a real signed delivery captured from a RevenueDot server) passes on Node 22.14 with TypeScript 5.9. Also tested live: a local RevenueDot delivered an `INITIAL_PURCHASE` to the built app (`node dist/src/main.js`) and recorded `delivered`, HTTP 200.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
 
 ## Run it
 ```bash

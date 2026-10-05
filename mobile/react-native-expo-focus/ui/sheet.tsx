@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: a short bottom sheet (the exit offer). React Native's Modal has no height detents, so the sheet
 // slides up over a dimmed backdrop itself; it works the same on iOS, Android and the web.
 // Docs: https://revenuedot.app/docs/guides/paywalls

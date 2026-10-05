@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the shared controls of the Focus sample: pill buttons, option rows with the gold selection dot,
 // the onboarding step bar and section labels. Every press scales to 0.97 and taps the haptic engine.
 // Docs: https://revenuedot.app/docs/sdks/react-native   Design notes: ../../DESIGN.md

@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the line icons the Focus screens use, drawn on a 24px grid to sit next to SF Symbols in the native apps.
 // Docs: https://revenuedot.app/docs/sdks/web
 export const ICONS = {

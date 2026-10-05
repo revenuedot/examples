@@ -6,7 +6,7 @@ A small Python 3 module, `has_entitlement(app_user_id, entitlement_id)`, that as
 **Status: verified, including against a live server.** `pytest` (4 tests against a local `http.server` fake that serves a `GET /v1/subscribers` response captured from a RevenueDot server: active, expired, lifetime, grace period, missing entitlement, 401 and 5xx) passes on Python 3.14 with pytest 9.1.1. The response shape was checked by hand against a local RevenueDot (active, expired, lifetime and new users). On 2026-09-30 the 2 opt-in live tests also passed (`pytest` with `REVENUEDOT_URL`, `REVENUEDOT_SECRET_KEY` and `REVENUEDOT_PROJECT_ID` set) against a local RevenueDot seeded with `selfhost/docker-compose/seed.sh`: a Test Store purchase granted `pro`, an expired one did not, and a wrong key threw.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its REST v1 `GET /v1/subscribers` answers with RevenueCat's JSON, so server code written for RevenueCat keeps working.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its REST v1 `GET /v1/subscribers` answers with RevenueCat's JSON, so server code written for RevenueCat keeps working.
 
 ## Run it
 ```bash

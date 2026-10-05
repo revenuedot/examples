@@ -6,7 +6,7 @@ A `docker-compose.yml` that runs RevenueDot (API and dashboard in one container)
 **Status: verified.** Pulled `ghcr.io/revenuedot/revenuedot:latest`, started with `docker compose up -d`, seeded with `seed.sh`, checked `/v1/health` and the dashboard at `/login`, and torn down with `docker compose down -v`, on 2026-10-03. The build-from-source path, backup with `pg_dump` and restore with `pg_restore` were verified on 2026-09-30.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
 
 ## Run it
 Needs Docker (with Compose v2), `curl` and `jq`.

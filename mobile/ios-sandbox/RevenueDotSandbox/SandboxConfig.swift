@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: values that connect the sandbox app to the RevenueDot project, plus the paywall's legal links.
 // Docs: https://revenuedot.app/docs/guides/sandbox-testing
 import Foundation

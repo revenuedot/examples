@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the minimal home behind the paywall: today's date, a Pro pill and plan card that read the `pro`
 // entitlement, Restore and Manage subscription, and a Developer section with what RevenueDot sees, plus log in/out.
 // Docs: https://revenuedot.app/docs/sdks/android

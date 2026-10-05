@@ -6,7 +6,7 @@ A Node.js 22 AWS Lambda function that verifies the HMAC signature of each Revenu
 **Status: verified.** `node --test` (3 tests with a real signed delivery captured from a RevenueDot server, sent as synthetic payload v2 events, plain and base64-encoded) passes on Node.js 22.14. Not deployed to AWS from here.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
 
 ## Run it
 ```bash

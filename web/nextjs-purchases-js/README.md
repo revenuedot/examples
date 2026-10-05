@@ -14,7 +14,7 @@ Leaving the paywall (its X or the browser's Back) offers the shortest plan once 
 **Status: verified.** `npm run typecheck` and `npm run build` pass. `npm run e2e` (Playwright, Chromium, `next dev`) passes 4 tests against a RevenueDot server seeded with [`selfhost/docker-compose/seed.sh`](../../selfhost/docker-compose), using purchases-js 1.67.1: it walks the quiz, checks the answers are posted as attributes, buys `$rc_monthly` through the Test Store dialog, confirms `pro` on the server itself and on the page, logs in and keeps `pro`; it drives the quiz with arrow keys and Enter; it checks that cancelling leaves `pro` inactive on the server; and it checks the exit offer and the preview plans.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
 
 ## Run it
 You need a RevenueDot server with a Test Store app. The quickest is [`selfhost/docker-compose`](../../selfhost/docker-compose) and its `seed.sh`, which prints a `test_` key.

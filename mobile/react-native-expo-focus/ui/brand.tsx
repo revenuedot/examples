@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the brand mark (an ink tile with an R whose leg ends in the gold dot) and the progress ring
 // (hairline track, ink arc, gold dot at the tip), drawn with react-native-svg.
 // Docs: https://revenuedot.app/docs/sdks/react-native   Design notes: ../../DESIGN.md

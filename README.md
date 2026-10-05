@@ -10,7 +10,7 @@
 **36 complete, runnable apps, webhook backends and self-host recipes for [RevenueDot](https://revenuedot.app), the open-source RevenueCat alternative.**<br>
 One folder per stack, each with a README, a `.env.example`, the exact commands to run it, and a note on what was run and against what.
 
-[Main repository](https://github.com/revenuedot/revenuedot) · [Docs](https://revenuedot.app/docs) · [Migrate from RevenueCat](https://revenuedot.app/docs/migrate) · [Start free on RevenueDot Cloud](https://app.revenuedot.app/signup)
+[Main repository](https://github.com/revenuedot/revenuedot) · [Docs](https://revenuedot.app/docs) · [Migrate from RevenueCat](https://revenuedot.app/docs/migrate) · [Start for free on RevenueDot Cloud](https://app.revenuedot.app/signup)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-0A0A0A)](LICENSE)
 [![Examples](https://img.shields.io/badge/examples-36-0A0A0A)](#examples)
@@ -80,7 +80,7 @@ This repository exists so that a model, or a developer working with one, can int
 - A `README.md` in this order: **What this is** (with the exact verification status), **Why RevenueDot**, **Run it**, **How it works**, **Migrate from RevenueCat**, **Docs**, **Related examples**.
 - A header comment in every source file:
   ```
-  // RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+  // RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
   // This file: <what it does in one line>.
   // Docs: https://revenuedot.app/docs/<page>   Migrate from RevenueCat: https://revenuedot.app/docs/migrate
   ```

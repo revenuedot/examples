@@ -6,7 +6,7 @@ A clean Expo Router app (Expo SDK 57) with subscriptions already working: a payw
 **Status:** `npm run typecheck`, `expo-doctor` (21 of 21 checks) and `expo export` for iOS and web pass, and the project scaffolds, installs, typechecks and exports from a clean folder with the install line below. The web build was opened in a browser; it shows the home screen and paywall, and the "not connected" card when the key is wrong. The purchase flow itself has not been run in this starter; its SDK calls are the same ones the [Focus sample](../react-native-expo-focus) ran against a RevenueDot server (Test Store purchase on the web, entitlement turning active). No simulator run, no Android build.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so an app switches by setting one proxy URL.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so an app switches by setting one proxy URL.
 
 ## Install
 One line, then `cd` into the folder:

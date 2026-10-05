@@ -9,7 +9,7 @@ An iPhone app, `app.revenuedot.sandbox`, that tests real App Store sandbox subsc
 The design rules for every mobile sample are in [`../DESIGN.md`](../DESIGN.md).
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
 
 ## Run it
 You need Xcode 16 or later, XcodeGen (`brew install xcodegen`), an iPhone, and an App Store sandbox tester (App Store Connect, Users and Access, Sandbox).

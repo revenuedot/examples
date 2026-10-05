@@ -1,4 +1,4 @@
-// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+// RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
 // This file: the onboarding screens before the paywall, in the shape that converts best in 2026: one question per
 // screen, an insight between questions, a "building your plan" moment, then the plan in the user's own words.
 // Research: company/docs/research/paywall-onboarding-2026.md   Docs: https://revenuedot.app/docs/guides/paywalls

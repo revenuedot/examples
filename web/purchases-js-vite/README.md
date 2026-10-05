@@ -12,7 +12,7 @@ Closing the paywall with annual selected offers the shortest plan once in a dial
 **Status: verified.** `npm run build` (which runs `tsc --noEmit` first) passes, and `npm run e2e` (Playwright, Chromium) passes 4 tests against a RevenueDot server seeded with [`selfhost/docker-compose/seed.sh`](../../selfhost/docker-compose), using purchases-js 1.67.1: it buys `$rc_monthly` through the Test Store dialog, confirms `pro` on the server itself and in the account view, signs in and keeps `pro`; checks that cancelling leaves `pro` inactive on the server; checks the exit offer and the free account; and checks the preview plans.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL.
 
 ## Run it
 You need a RevenueDot server with a Test Store app. The quickest is [`selfhost/docker-compose`](../../selfhost/docker-compose) and its `seed.sh`, which prints a `test_` key.

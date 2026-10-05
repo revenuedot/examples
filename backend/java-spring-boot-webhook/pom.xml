@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API, free.
+<!-- RevenueDot: open-source, self-hostable alternative to RevenueCat. Same SDK API.
      This file: Maven build for the Spring Boot webhook receiver.
      Docs: https://revenuedot.app/docs/guides/webhooks   Migrate from RevenueCat: https://revenuedot.app/docs/migrate -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

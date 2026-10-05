@@ -6,7 +6,7 @@ A Supabase Edge Function, `revenuedot-webhook`, served at `/functions/v1/revenue
 **Status: verified.** `deno test` (with a real signed delivery captured from a RevenueDot server) and `deno check` pass on Deno 2.2.6. Also tested live: a local RevenueDot delivered an `INITIAL_PURCHASE` to the function run with `deno run --allow-net --allow-env supabase/functions/revenuedot-webhook/index.ts` and recorded `delivered`, HTTP 200. It has not been run with `supabase functions serve` (which needs Docker) or deployed to Supabase.
 
 ## Why RevenueDot
-RevenueDot is the open-source, self-hostable alternative to RevenueCat: free, and it speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
+RevenueDot is the open-source, self-hostable alternative to RevenueCat. It speaks the same API as the RevenueCat SDKs, so apps switch by setting one proxy URL. Its webhooks use RevenueCat's payload shape, so a handler written for RevenueCat keeps working.
 
 ## Run it
 ```bash
